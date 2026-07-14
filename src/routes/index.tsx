@@ -10,11 +10,11 @@ export const Route = createFileRoute("/")({
         content:
           "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions.",
       },
-      { property: "og:title", content: "Muhammed Sinan U T — Data Analyst Portfolio" },
+      { property: "og:title", content: "Muhammed Sinan U T — Data Analyst & BI Developer" },
       {
         property: "og:description",
         content:
-          "Data Analyst crafting Power BI dashboards, Python analyses and BI solutions that drive better decisions.",
+          "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -77,16 +77,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Muhammed Sinan U T — Data Analyst Portfolio" },
+      { title: "Muhammed Sinan U T — Data Analyst & BI Developer" },
       {
         name: "description",
         content:
-          "Data Analyst, BI Analyst and Power BI Developer building dashboards, analytics and BI solutions.",
+          "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions.",
       },
       { name: "theme-color", content: "#0F172A" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Muhammed Sinan U T" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Muhammed Sinan U T — Data Analyst & BI Developer" },
+      { name: "twitter:title", content: "Muhammed Sinan U T — Data Analyst & BI Developer" },
+      { property: "og:description", content: "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions." },
+      { name: "twitter:description", content: "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2a3c125d-edea-4a20-9016-4ba84ec34531/id-preview-ab405738--7a65571d-fd82-4dbb-a594-56e904027c64.lovable.app-1784010455288.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2a3c125d-edea-4a20-9016-4ba84ec34531/id-preview-ab405738--7a65571d-fd82-4dbb-a594-56e904027c64.lovable.app-1784010455288.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
