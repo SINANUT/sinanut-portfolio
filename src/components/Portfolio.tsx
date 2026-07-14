@@ -22,13 +22,19 @@ import projExpense from "@/assets/project-expense.jpg";
 
 /* ------------------------------- Data ------------------------------- */
 
+const GITHUB_URL = "https://github.com/SINANUT";
+const LINKEDIN_URL = "https://www.linkedin.com/in/muhammed-sinan-ut/";
+const EMAIL = "sinanut1999@gmail.com";
+const LOCATION = "Malappuram, Kerala, India";
+
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
-  { id: "services", label: "Services" },
+  { id: "education", label: "Education" },
+  { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -37,24 +43,18 @@ const TITLES = [
   "Business Intelligence Analyst",
   "Power BI Developer",
   "Python Data Analyst",
+  "SQL Analyst",
 ];
 
-const SKILLS: { name: string; level: number; icon: typeof Code2 }[] = [
-  { name: "Python", level: 92, icon: Code2 },
-  { name: "SQL / MySQL", level: 94, icon: Database },
-  { name: "Power BI", level: 95, icon: BarChart3 },
-  { name: "Tableau", level: 85, icon: TrendingUp },
-  { name: "Excel", level: 96, icon: FileText },
-  { name: "Pandas / NumPy", level: 90, icon: Layers },
-  { name: "Statistics", level: 82, icon: Brain },
-  { name: "Data Cleaning", level: 93, icon: Sparkles },
-  { name: "Data Visualization", level: 92, icon: BarChart3 },
-  { name: "Business Intelligence", level: 90, icon: TrendingUp },
-  { name: "Dashboard Development", level: 94, icon: Layers },
-  { name: "ETL", level: 80, icon: Zap },
-  { name: "Git / GitHub", level: 88, icon: Github },
-  { name: "Problem Solving", level: 95, icon: Brain },
+const SKILL_GROUPS: { title: string; icon: typeof Code2; skills: string[] }[] = [
+  { title: "Programming", icon: Code2, skills: ["Python", "SQL", "MySQL"] },
+  { title: "Libraries", icon: Layers, skills: ["Pandas", "NumPy", "Matplotlib"] },
+  { title: "Analytics", icon: Brain, skills: ["EDA", "Data Cleaning", "Statistics"] },
+  { title: "Visualization", icon: BarChart3, skills: ["Power BI", "Tableau", "Excel", "Business Intelligence"] },
+  { title: "Tools", icon: Terminal, skills: ["Git", "GitHub", "VS Code", "Google Sheets"] },
+  { title: "Soft Skills", icon: Sparkles, skills: ["Communication", "Problem Solving", "Analytical Thinking", "Time Management"] },
 ];
+
 
 const PROJECTS = [
   {
