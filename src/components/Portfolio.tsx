@@ -960,12 +960,6 @@ function Contact() {
               ))}
             </div>
 
-                  className="grid h-11 w-11 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground hover:scale-110"
-                >
-                  <s.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
           </div>
         </Reveal>
 
