@@ -372,7 +372,7 @@ function TypedTitle() {
 
 function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero pt-28">
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero pt-28 pb-20">
       <Particles />
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-glow-pulse" />
       <div className="pointer-events-none absolute -right-32 bottom-10 h-[28rem] w-[28rem] rounded-full bg-accent/10 blur-3xl animate-glow-pulse" />
@@ -387,29 +387,37 @@ function Hero() {
           <h1 className="text-balance text-5xl font-bold leading-[1.05] md:text-7xl">
             Muhammed Sinan <span className="text-gradient-primary">U T</span>
           </h1>
-          <div className="mt-6 flex min-h-[3rem] items-center text-3xl font-semibold md:text-4xl">
+          <div className="mt-6 flex min-h-[3rem] items-center text-2xl font-semibold sm:text-3xl md:text-4xl">
             <TypedTitle />
           </div>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            I transform raw data into actionable insights through analytics, visualization,
-            and business intelligence solutions that drive better decisions.
+            Turning raw data into actionable business insights through analytics, visualization and storytelling — with SQL, Python, Power BI and Excel.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
               <a href="#resume"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="glass border-primary/30">
-              <a href="#projects">View Projects <ArrowRight className="ml-2 h-4 w-4" /></a>
+              <a href="#projects">View My Work <ArrowRight className="ml-2 h-4 w-4" /></a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> GitHub</a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-4 w-4" /> LinkedIn</a>
             </Button>
             <Button asChild size="lg" variant="ghost">
-              <a href="#contact">Contact Me</a>
+              <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Contact Me</a>
             </Button>
           </div>
 
-          <div className="mt-12 flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" aria-label="GitHub" className="hover:text-foreground transition-colors"><Github className="h-5 w-5" /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-foreground transition-colors"><Linkedin className="h-5 w-5" /></a>
-            <a href="#" aria-label="Email" className="hover:text-foreground transition-colors"><Mail className="h-5 w-5" /></a>
+          <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-foreground"><Github className="h-5 w-5" /></a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-foreground"><Linkedin className="h-5 w-5" /></a>
+            <a href={`mailto:${EMAIL}`} aria-label="Email" className="transition-colors hover:text-foreground"><Mail className="h-5 w-5" /></a>
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" /> {LOCATION}
+            </span>
             <span className="hidden items-center gap-2 md:inline-flex">
               <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_theme(colors.emerald.400)]" />
               Available for opportunities
@@ -443,9 +451,22 @@ function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <a
+        href="#about"
+        aria-label="Scroll to About"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-foreground md:flex"
+      >
+        <span>Scroll</span>
+        <span className="relative grid h-10 w-6 place-items-start rounded-full border border-primary/40 p-1">
+          <span className="h-2 w-1 animate-bounce rounded-full bg-primary" />
+        </span>
+      </a>
     </section>
   );
 }
+
 
 /* ------------------------------- About ------------------------------- */
 
