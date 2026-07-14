@@ -22,13 +22,19 @@ import projExpense from "@/assets/project-expense.jpg";
 
 /* ------------------------------- Data ------------------------------- */
 
+const GITHUB_URL = "https://github.com/SINANUT";
+const LINKEDIN_URL = "https://www.linkedin.com/in/muhammed-sinan-ut/";
+const EMAIL = "sinanut1999@gmail.com";
+const LOCATION = "Malappuram, Kerala, India";
+
 const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
-  { id: "services", label: "Services" },
+  { id: "education", label: "Education" },
+  { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -37,24 +43,18 @@ const TITLES = [
   "Business Intelligence Analyst",
   "Power BI Developer",
   "Python Data Analyst",
+  "SQL Analyst",
 ];
 
-const SKILLS: { name: string; level: number; icon: typeof Code2 }[] = [
-  { name: "Python", level: 92, icon: Code2 },
-  { name: "SQL / MySQL", level: 94, icon: Database },
-  { name: "Power BI", level: 95, icon: BarChart3 },
-  { name: "Tableau", level: 85, icon: TrendingUp },
-  { name: "Excel", level: 96, icon: FileText },
-  { name: "Pandas / NumPy", level: 90, icon: Layers },
-  { name: "Statistics", level: 82, icon: Brain },
-  { name: "Data Cleaning", level: 93, icon: Sparkles },
-  { name: "Data Visualization", level: 92, icon: BarChart3 },
-  { name: "Business Intelligence", level: 90, icon: TrendingUp },
-  { name: "Dashboard Development", level: 94, icon: Layers },
-  { name: "ETL", level: 80, icon: Zap },
-  { name: "Git / GitHub", level: 88, icon: Github },
-  { name: "Problem Solving", level: 95, icon: Brain },
+const SKILL_GROUPS: { title: string; icon: typeof Code2; skills: string[] }[] = [
+  { title: "Programming", icon: Code2, skills: ["Python", "SQL", "MySQL"] },
+  { title: "Libraries", icon: Layers, skills: ["Pandas", "NumPy", "Matplotlib"] },
+  { title: "Analytics", icon: Brain, skills: ["EDA", "Data Cleaning", "Statistics"] },
+  { title: "Visualization", icon: BarChart3, skills: ["Power BI", "Tableau", "Excel", "Business Intelligence"] },
+  { title: "Tools", icon: Terminal, skills: ["Git", "GitHub", "VS Code", "Google Sheets"] },
+  { title: "Soft Skills", icon: Sparkles, skills: ["Communication", "Problem Solving", "Analytical Thinking", "Time Management"] },
 ];
+
 
 const PROJECTS = [
   {
@@ -108,13 +108,14 @@ const PROJECTS = [
 ];
 
 const EXPERIENCE = [
-  { role: "Data Analyst Intern", org: "Analytics Studio", when: "2024 — Present",
-    desc: "Built Power BI reports for operations and sales teams; automated weekly KPI refresh reducing manual work by 70%." },
-  { role: "Freelance BI Developer", org: "Independent", when: "2023 — Present",
-    desc: "Delivered dashboards and data-cleaning pipelines for early-stage startups across e-commerce and edtech." },
-  { role: "Personal Data Projects", org: "Self-directed", when: "2022 — Present",
-    desc: "Shipped 15+ end-to-end analytics projects on GitHub covering Python, SQL, Tableau and Power BI." },
+  { role: "Data Analytics Intern", org: "HACA (Higher Academy for Career Advancement)", when: "2024",
+    desc: "Completed an intensive data analytics internship covering Python, SQL, Power BI and Excel. Built end-to-end analytics projects — from data cleaning and EDA to dashboarding and business storytelling." },
+  { role: "Freelance BI & Dashboard Developer", org: "Independent", when: "2024 — Present",
+    desc: "Designed Power BI and Excel dashboards for small businesses, automating weekly reporting and translating raw operational data into decision-ready insights." },
+  { role: "Personal Data Projects", org: "Self-directed", when: "2023 — Present",
+    desc: "Shipped 15+ end-to-end analytics projects on GitHub across Python, SQL, Power BI and Tableau — focused on real-world business questions." },
 ];
+
 
 const CERTS = [
   "Microsoft Power BI Data Analyst",
@@ -280,6 +281,14 @@ function TopNav({ theme, toggleTheme }: { theme: "dark" | "light"; toggleTheme: 
                 )}
               </a>
             ))}
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="ml-1 inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Github className="h-4 w-4" /> GitHub
+            </a>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -293,6 +302,7 @@ function TopNav({ theme, toggleTheme }: { theme: "dark" | "light"; toggleTheme: 
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
+
         </div>
 
         {open && (
@@ -372,7 +382,7 @@ function TypedTitle() {
 
 function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero pt-28">
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden bg-gradient-hero pt-28 pb-20">
       <Particles />
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-glow-pulse" />
       <div className="pointer-events-none absolute -right-32 bottom-10 h-[28rem] w-[28rem] rounded-full bg-accent/10 blur-3xl animate-glow-pulse" />
@@ -387,29 +397,37 @@ function Hero() {
           <h1 className="text-balance text-5xl font-bold leading-[1.05] md:text-7xl">
             Muhammed Sinan <span className="text-gradient-primary">U T</span>
           </h1>
-          <div className="mt-6 flex min-h-[3rem] items-center text-3xl font-semibold md:text-4xl">
+          <div className="mt-6 flex min-h-[3rem] items-center text-2xl font-semibold sm:text-3xl md:text-4xl">
             <TypedTitle />
           </div>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            I transform raw data into actionable insights through analytics, visualization,
-            and business intelligence solutions that drive better decisions.
+            Turning raw data into actionable business insights through analytics, visualization and storytelling — with SQL, Python, Power BI and Excel.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
               <a href="#resume"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="glass border-primary/30">
-              <a href="#projects">View Projects <ArrowRight className="ml-2 h-4 w-4" /></a>
+              <a href="#projects">View My Work <ArrowRight className="ml-2 h-4 w-4" /></a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> GitHub</a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-4 w-4" /> LinkedIn</a>
             </Button>
             <Button asChild size="lg" variant="ghost">
-              <a href="#contact">Contact Me</a>
+              <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Contact Me</a>
             </Button>
           </div>
 
-          <div className="mt-12 flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" aria-label="GitHub" className="hover:text-foreground transition-colors"><Github className="h-5 w-5" /></a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-foreground transition-colors"><Linkedin className="h-5 w-5" /></a>
-            <a href="#" aria-label="Email" className="hover:text-foreground transition-colors"><Mail className="h-5 w-5" /></a>
+          <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-foreground"><Github className="h-5 w-5" /></a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-foreground"><Linkedin className="h-5 w-5" /></a>
+            <a href={`mailto:${EMAIL}`} aria-label="Email" className="transition-colors hover:text-foreground"><Mail className="h-5 w-5" /></a>
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" /> {LOCATION}
+            </span>
             <span className="hidden items-center gap-2 md:inline-flex">
               <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_theme(colors.emerald.400)]" />
               Available for opportunities
@@ -443,9 +461,22 @@ function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <a
+        href="#about"
+        aria-label="Scroll to About"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-foreground md:flex"
+      >
+        <span>Scroll</span>
+        <span className="relative grid h-10 w-6 place-items-start rounded-full border border-primary/40 p-1">
+          <span className="h-2 w-1 animate-bounce rounded-full bg-primary" />
+        </span>
+      </a>
     </section>
   );
 }
+
 
 /* ------------------------------- About ------------------------------- */
 
@@ -465,18 +496,20 @@ function About() {
         <Reveal delay={100}>
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              I'm a data analyst with a deep passion for turning numbers into narratives. My work sits at
-              the intersection of <span className="text-foreground font-medium">analytics, business strategy and design</span> — because
-              a chart is only useful when it helps someone make a better call.
+              I'm a <span className="text-foreground font-medium">Data Analyst</span> based in Malappuram, Kerala, with a background in
+              <span className="text-foreground font-medium"> BA Economics</span> and hands-on training through a
+              <span className="text-foreground font-medium"> Data Analytics Internship at HACA</span>. My work sits where economics meets
+              engineering — using data to answer the questions businesses actually care about.
             </p>
             <p>
-              I've built dashboards for sales teams, cleaned datasets that no one else wanted to touch, and
-              written SQL queries that answered questions leadership didn't know how to ask. What I care about
-              most is <span className="text-foreground font-medium">clarity</span>: clarity of thought, of data, and of communication.
+              I specialize in <span className="text-foreground font-medium">SQL, Python and Power BI</span> — building clean data pipelines,
+              interactive dashboards and reports that give teams a single source of truth. From raw CSVs to executive-ready visuals, I own
+              the full analytical workflow: <span className="text-foreground font-medium">data cleaning, EDA, modeling and storytelling</span>.
             </p>
             <p>
-              Continuous learning is non-negotiable — every week I pick up a new technique, dataset or tool,
-              because the best analysts stay curious.
+              What drives me is <span className="text-foreground font-medium">business intelligence with impact</span> — dashboards leaders open every
+              Monday, KPIs that shift decisions, insights that don't sit in a slide deck. I'm actively looking for
+              <span className="text-foreground font-medium"> Data Analyst, BI Analyst and Power BI Developer</span> roles where I can turn data into measurable outcomes.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
               {[
@@ -493,6 +526,7 @@ function About() {
             </div>
           </div>
         </Reveal>
+
       </div>
     </Section>
   );
@@ -500,32 +534,33 @@ function About() {
 
 /* ------------------------------ Skills ------------------------------ */
 
-function SkillCard({ skill, delay }: { skill: (typeof SKILLS)[number]; delay: number }) {
-  const { ref, inView } = useInView<HTMLDivElement>(0.3);
+function SkillGroupCard({ group, delay }: { group: (typeof SKILL_GROUPS)[number]; delay: number }) {
+  const { ref, inView } = useInView<HTMLDivElement>(0.2);
   return (
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        "glass group relative overflow-hidden rounded-2xl p-5 transition-all duration-700 hover-lift",
+        "glass group relative overflow-hidden rounded-3xl p-7 transition-all duration-700 hover-lift",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
       )}
     >
-      <div className="absolute inset-0 -z-10 bg-gradient-primary opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-20" />
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary/20 text-primary transition-transform group-hover:scale-110">
-            <skill.icon className="h-5 w-5" />
-          </div>
-          <p className="font-semibold">{skill.name}</p>
+      <div className="absolute inset-0 -z-10 bg-gradient-primary opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25" />
+      <div className="flex items-center gap-3">
+        <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-primary/20 text-primary shadow-glow transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+          <group.icon className="h-6 w-6" />
         </div>
-        <span className="text-xs font-mono text-muted-foreground">{skill.level}%</span>
+        <h3 className="font-display text-xl font-semibold">{group.title}</h3>
       </div>
-      <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-muted">
-        <div
-          className="h-full rounded-full bg-gradient-primary transition-all duration-1000 ease-out"
-          style={{ width: inView ? `${skill.level}%` : "0%" }}
-        />
+      <div className="mt-6 flex flex-wrap gap-2">
+        {group.skills.map((s) => (
+          <span
+            key={s}
+            className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm font-medium text-foreground/90 transition-all hover:border-primary/60 hover:bg-primary/15"
+          >
+            {s}
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -537,17 +572,18 @@ function Skills() {
       <div className="pointer-events-none absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
       <SectionHeader
         eyebrow="Skills"
-        title="A well-stocked toolkit"
-        subtitle="The tools I reach for daily — sharpened through real projects and continuous practice."
+        title="A well-stocked analyst toolkit"
+        subtitle="Grouped by discipline — the exact stack I use to ship dashboards, models and insights."
       />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {SKILLS.map((s, i) => (
-          <SkillCard key={s.name} skill={s} delay={i * 40} />
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {SKILL_GROUPS.map((g, i) => (
+          <SkillGroupCard key={g.title} group={g} delay={i * 60} />
         ))}
       </div>
     </Section>
   );
 }
+
 
 /* ------------------------------ Projects ------------------------------ */
 
@@ -824,9 +860,10 @@ function GitHubSection() {
                 <Github className="h-7 w-7 text-primary-foreground" />
               </div>
               <div>
-                <p className="font-semibold text-lg">@muhammed-sinan</p>
-                <p className="text-sm text-muted-foreground">Data Analyst · Kerala, India</p>
+                <p className="font-semibold text-lg">@SINANUT</p>
+                <p className="text-sm text-muted-foreground">Data Analyst · {LOCATION}</p>
               </div>
+
             </div>
             <div className="mt-6 grid grid-cols-3 gap-3">
               {[
@@ -841,8 +878,9 @@ function GitHubSection() {
               ))}
             </div>
             <Button asChild className="mt-6 w-full bg-gradient-primary text-primary-foreground">
-              <a href="#"><Github className="mr-2 h-4 w-4" /> View Profile</a>
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> View Profile</a>
             </Button>
+
           </div>
           <div>
             <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">Contribution activity</p>
@@ -888,37 +926,49 @@ function Contact() {
         <Reveal>
           <div className="flex h-full flex-col gap-4">
             {[
-              { icon: Mail, label: "Email", value: "sinan@example.com" },
-              { icon: Phone, label: "Phone", value: "+91 90000 00000" },
-              { icon: MapPin, label: "Location", value: "Kerala, India · Open to Remote" },
-            ].map((c) => (
-              <Card key={c.label} className="glass flex items-center gap-4 rounded-2xl border-primary/10 p-5">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary">
-                  <c.icon className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
-                  <p className="truncate font-medium">{c.value}</p>
-                </div>
-              </Card>
-            ))}
+              { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+              { icon: Linkedin, label: "LinkedIn", value: "muhammed-sinan-ut", href: LINKEDIN_URL },
+              { icon: MapPin, label: "Location", value: `${LOCATION} · Open to Remote`, href: undefined as string | undefined },
+            ].map((c) => {
+              const Inner = (
+                <>
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary">
+                    <c.icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
+                    <p className="truncate font-medium">{c.value}</p>
+                  </div>
+                </>
+              );
+              return (
+                <Card key={c.label} className="glass flex items-center gap-4 rounded-2xl border-primary/10 p-5 transition-colors hover:border-primary/40">
+                  {c.href ? (
+                    <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex flex-1 items-center gap-4">{Inner}</a>
+                  ) : Inner}
+                </Card>
+              );
+            })}
             <div className="glass mt-auto flex items-center justify-around rounded-2xl border-primary/10 p-5">
               {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Mail, href: "#", label: "Email" },
-                { icon: FileText, href: "#", label: "Resume" },
+                { icon: Github, href: GITHUB_URL, label: "GitHub" },
+                { icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
+                { icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+                { icon: FileText, href: "#resume", label: "Resume" },
               ].map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
                   aria-label={s.label}
-                  className="grid h-11 w-11 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground hover:scale-110"
+                  className="grid h-11 w-11 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:scale-110 hover:bg-gradient-primary hover:text-primary-foreground"
                 >
                   <s.icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
+
           </div>
         </Reveal>
 
@@ -991,12 +1041,17 @@ function Footer() {
         <div>
           <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Follow</p>
           <div className="flex gap-3">
-            {[Github, Linkedin, Mail].map((Icon, i) => (
-              <a key={i} href="#" className="grid h-10 w-10 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground">
+            {[
+              { Icon: Github, href: GITHUB_URL, label: "GitHub" },
+              { Icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
+              { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+            ].map(({ Icon, href, label }) => (
+              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
           </div>
+
           <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
             <Users className="h-3 w-3" /> Currently open to opportunities
           </p>
