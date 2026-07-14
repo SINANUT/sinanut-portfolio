@@ -869,8 +869,9 @@ function GitHubSection() {
               ))}
             </div>
             <Button asChild className="mt-6 w-full bg-gradient-primary text-primary-foreground">
-              <a href="#"><Github className="mr-2 h-4 w-4" /> View Profile</a>
+              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> View Profile</a>
             </Button>
+
           </div>
           <div>
             <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">Contribution activity</p>
