@@ -281,6 +281,14 @@ function TopNav({ theme, toggleTheme }: { theme: "dark" | "light"; toggleTheme: 
                 )}
               </a>
             ))}
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="ml-1 inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Github className="h-4 w-4" /> GitHub
+            </a>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -294,6 +302,7 @@ function TopNav({ theme, toggleTheme }: { theme: "dark" | "light"; toggleTheme: 
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
+
         </div>
 
         {open && (
