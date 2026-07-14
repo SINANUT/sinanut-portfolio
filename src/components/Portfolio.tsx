@@ -486,18 +486,20 @@ function About() {
         <Reveal delay={100}>
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              I'm a data analyst with a deep passion for turning numbers into narratives. My work sits at
-              the intersection of <span className="text-foreground font-medium">analytics, business strategy and design</span> — because
-              a chart is only useful when it helps someone make a better call.
+              I'm a <span className="text-foreground font-medium">Data Analyst</span> based in Malappuram, Kerala, with a background in
+              <span className="text-foreground font-medium"> BA Economics</span> and hands-on training through a
+              <span className="text-foreground font-medium"> Data Analytics Internship at HACA</span>. My work sits where economics meets
+              engineering — using data to answer the questions businesses actually care about.
             </p>
             <p>
-              I've built dashboards for sales teams, cleaned datasets that no one else wanted to touch, and
-              written SQL queries that answered questions leadership didn't know how to ask. What I care about
-              most is <span className="text-foreground font-medium">clarity</span>: clarity of thought, of data, and of communication.
+              I specialize in <span className="text-foreground font-medium">SQL, Python and Power BI</span> — building clean data pipelines,
+              interactive dashboards and reports that give teams a single source of truth. From raw CSVs to executive-ready visuals, I own
+              the full analytical workflow: <span className="text-foreground font-medium">data cleaning, EDA, modeling and storytelling</span>.
             </p>
             <p>
-              Continuous learning is non-negotiable — every week I pick up a new technique, dataset or tool,
-              because the best analysts stay curious.
+              What drives me is <span className="text-foreground font-medium">business intelligence with impact</span> — dashboards leaders open every
+              Monday, KPIs that shift decisions, insights that don't sit in a slide deck. I'm actively looking for
+              <span className="text-foreground font-medium"> Data Analyst, BI Analyst and Power BI Developer</span> roles where I can turn data into measurable outcomes.
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
               {[
@@ -514,6 +516,7 @@ function About() {
             </div>
           </div>
         </Reveal>
+
       </div>
     </Section>
   );
