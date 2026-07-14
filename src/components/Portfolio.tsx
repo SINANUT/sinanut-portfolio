@@ -108,13 +108,14 @@ const PROJECTS = [
 ];
 
 const EXPERIENCE = [
-  { role: "Data Analyst Intern", org: "Analytics Studio", when: "2024 — Present",
-    desc: "Built Power BI reports for operations and sales teams; automated weekly KPI refresh reducing manual work by 70%." },
-  { role: "Freelance BI Developer", org: "Independent", when: "2023 — Present",
-    desc: "Delivered dashboards and data-cleaning pipelines for early-stage startups across e-commerce and edtech." },
-  { role: "Personal Data Projects", org: "Self-directed", when: "2022 — Present",
-    desc: "Shipped 15+ end-to-end analytics projects on GitHub covering Python, SQL, Tableau and Power BI." },
+  { role: "Data Analytics Intern", org: "HACA (Higher Academy for Career Advancement)", when: "2024",
+    desc: "Completed an intensive data analytics internship covering Python, SQL, Power BI and Excel. Built end-to-end analytics projects — from data cleaning and EDA to dashboarding and business storytelling." },
+  { role: "Freelance BI & Dashboard Developer", org: "Independent", when: "2024 — Present",
+    desc: "Designed Power BI and Excel dashboards for small businesses, automating weekly reporting and translating raw operational data into decision-ready insights." },
+  { role: "Personal Data Projects", org: "Self-directed", when: "2023 — Present",
+    desc: "Shipped 15+ end-to-end analytics projects on GitHub across Python, SQL, Power BI and Tableau — focused on real-world business questions." },
 ];
+
 
 const CERTS = [
   "Microsoft Power BI Data Analyst",
