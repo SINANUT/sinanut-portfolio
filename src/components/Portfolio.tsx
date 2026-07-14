@@ -851,9 +851,10 @@ function GitHubSection() {
                 <Github className="h-7 w-7 text-primary-foreground" />
               </div>
               <div>
-                <p className="font-semibold text-lg">@muhammed-sinan</p>
-                <p className="text-sm text-muted-foreground">Data Analyst · Kerala, India</p>
+                <p className="font-semibold text-lg">@SINANUT</p>
+                <p className="text-sm text-muted-foreground">Data Analyst · {LOCATION}</p>
               </div>
+
             </div>
             <div className="mt-6 grid grid-cols-3 gap-3">
               {[
