@@ -917,31 +917,49 @@ function Contact() {
         <Reveal>
           <div className="flex h-full flex-col gap-4">
             {[
-              { icon: Mail, label: "Email", value: "sinan@example.com" },
-              { icon: Phone, label: "Phone", value: "+91 90000 00000" },
-              { icon: MapPin, label: "Location", value: "Kerala, India · Open to Remote" },
-            ].map((c) => (
-              <Card key={c.label} className="glass flex items-center gap-4 rounded-2xl border-primary/10 p-5">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary">
-                  <c.icon className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
-                  <p className="truncate font-medium">{c.value}</p>
-                </div>
-              </Card>
-            ))}
+              { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+              { icon: Linkedin, label: "LinkedIn", value: "muhammed-sinan-ut", href: LINKEDIN_URL },
+              { icon: MapPin, label: "Location", value: `${LOCATION} · Open to Remote`, href: undefined as string | undefined },
+            ].map((c) => {
+              const Inner = (
+                <>
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary">
+                    <c.icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
+                    <p className="truncate font-medium">{c.value}</p>
+                  </div>
+                </>
+              );
+              return (
+                <Card key={c.label} className="glass flex items-center gap-4 rounded-2xl border-primary/10 p-5 transition-colors hover:border-primary/40">
+                  {c.href ? (
+                    <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex flex-1 items-center gap-4">{Inner}</a>
+                  ) : Inner}
+                </Card>
+              );
+            })}
             <div className="glass mt-auto flex items-center justify-around rounded-2xl border-primary/10 p-5">
               {[
-                { icon: Github, href: "#", label: "GitHub" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Mail, href: "#", label: "Email" },
-                { icon: FileText, href: "#", label: "Resume" },
+                { icon: Github, href: GITHUB_URL, label: "GitHub" },
+                { icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
+                { icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+                { icon: FileText, href: "#resume", label: "Resume" },
               ].map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer"
                   aria-label={s.label}
+                  className="grid h-11 w-11 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:scale-110 hover:bg-gradient-primary hover:text-primary-foreground"
+                >
+                  <s.icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+
                   className="grid h-11 w-11 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground hover:scale-110"
                 >
                   <s.icon className="h-4 w-4" />
