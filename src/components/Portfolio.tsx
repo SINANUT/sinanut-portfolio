@@ -1032,12 +1032,17 @@ function Footer() {
         <div>
           <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Follow</p>
           <div className="flex gap-3">
-            {[Github, Linkedin, Mail].map((Icon, i) => (
-              <a key={i} href="#" className="grid h-10 w-10 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground">
+            {[
+              { Icon: Github, href: GITHUB_URL, label: "GitHub" },
+              { Icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
+              { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+            ].map(({ Icon, href, label }) => (
+              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
           </div>
+
           <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
             <Users className="h-3 w-3" /> Currently open to opportunities
           </p>
