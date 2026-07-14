@@ -500,32 +500,33 @@ function About() {
 
 /* ------------------------------ Skills ------------------------------ */
 
-function SkillCard({ skill, delay }: { skill: (typeof SKILLS)[number]; delay: number }) {
-  const { ref, inView } = useInView<HTMLDivElement>(0.3);
+function SkillGroupCard({ group, delay }: { group: (typeof SKILL_GROUPS)[number]; delay: number }) {
+  const { ref, inView } = useInView<HTMLDivElement>(0.2);
   return (
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        "glass group relative overflow-hidden rounded-2xl p-5 transition-all duration-700 hover-lift",
+        "glass group relative overflow-hidden rounded-3xl p-7 transition-all duration-700 hover-lift",
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
       )}
     >
-      <div className="absolute inset-0 -z-10 bg-gradient-primary opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-20" />
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary/20 text-primary transition-transform group-hover:scale-110">
-            <skill.icon className="h-5 w-5" />
-          </div>
-          <p className="font-semibold">{skill.name}</p>
+      <div className="absolute inset-0 -z-10 bg-gradient-primary opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25" />
+      <div className="flex items-center gap-3">
+        <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-primary/20 text-primary shadow-glow transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+          <group.icon className="h-6 w-6" />
         </div>
-        <span className="text-xs font-mono text-muted-foreground">{skill.level}%</span>
+        <h3 className="font-display text-xl font-semibold">{group.title}</h3>
       </div>
-      <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-muted">
-        <div
-          className="h-full rounded-full bg-gradient-primary transition-all duration-1000 ease-out"
-          style={{ width: inView ? `${skill.level}%` : "0%" }}
-        />
+      <div className="mt-6 flex flex-wrap gap-2">
+        {group.skills.map((s) => (
+          <span
+            key={s}
+            className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-sm font-medium text-foreground/90 transition-all hover:border-primary/60 hover:bg-primary/15"
+          >
+            {s}
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -537,17 +538,18 @@ function Skills() {
       <div className="pointer-events-none absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
       <SectionHeader
         eyebrow="Skills"
-        title="A well-stocked toolkit"
-        subtitle="The tools I reach for daily — sharpened through real projects and continuous practice."
+        title="A well-stocked analyst toolkit"
+        subtitle="Grouped by discipline — the exact stack I use to ship dashboards, models and insights."
       />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {SKILLS.map((s, i) => (
-          <SkillCard key={s.name} skill={s} delay={i * 40} />
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {SKILL_GROUPS.map((g, i) => (
+          <SkillGroupCard key={g.title} group={g} delay={i * 60} />
         ))}
       </div>
     </Section>
   );
 }
+
 
 /* ------------------------------ Projects ------------------------------ */
 
