@@ -438,13 +438,15 @@ function Hero() {
 
         <div className="relative mx-auto w-full max-w-md animate-fade-up" style={{ animationDelay: "150ms" }}>
           <div className="absolute -inset-6 rounded-[2rem] bg-gradient-primary opacity-30 blur-2xl" />
-          <div className="glass relative overflow-hidden rounded-[2rem] p-2 shadow-elegant">
+          <div className="glass relative overflow-hidden rounded-[2rem] p-2 shadow-elegant ring-1 ring-primary/30">
             <img
               src={profileImg}
               alt="Muhammed Sinan U T — Data Analyst"
-              width={1024}
-              height={1280}
-              className="h-auto w-full rounded-[1.6rem] object-cover"
+              width={892}
+              height={1029}
+              loading="eager"
+              decoding="async"
+              className="h-auto w-full rounded-[1.6rem] object-cover object-center"
             />
           </div>
           <div className="glass absolute -bottom-6 -left-6 hidden rounded-2xl p-4 shadow-card md:block">
