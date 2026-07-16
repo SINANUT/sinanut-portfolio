@@ -12,7 +12,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
-import profileImg from "@/assets/profile.jpg";
+import profileAsset from "@/assets/sinan-profile.png.asset.json";
+const profileImg = profileAsset.url;
 import projSales from "@/assets/project-sales.jpg";
 import projPrime from "@/assets/project-prime.jpg";
 import projBooks from "@/assets/project-books.jpg";
