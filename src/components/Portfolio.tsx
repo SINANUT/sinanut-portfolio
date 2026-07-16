@@ -491,8 +491,8 @@ function About() {
         <Reveal>
           <div className="relative">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-accent opacity-20 blur-xl" />
-            <Card className="glass relative overflow-hidden rounded-3xl border-primary/10 p-1">
-              <img src={profileImg} alt="Portrait" loading="lazy" className="h-full w-full rounded-3xl object-cover" />
+            <Card className="glass relative overflow-hidden rounded-3xl border-primary/20 p-1 shadow-elegant ring-1 ring-primary/25">
+              <img src={profileImg} alt="Muhammed Sinan U T" loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full rounded-[1.35rem] object-cover object-center" />
             </Card>
           </div>
         </Reveal>
