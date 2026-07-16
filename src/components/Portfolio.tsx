@@ -15,11 +15,11 @@ import { cn } from "@/lib/utils";
 import profileAsset from "@/assets/sinan-profile.png.asset.json";
 const profileImg = profileAsset.url;
 import projSales from "@/assets/project-sales.jpg";
-import projPrime from "@/assets/project-prime.jpg";
 import projBooks from "@/assets/project-books.jpg";
 import projSalary from "@/assets/project-salary.jpg";
 import projSql from "@/assets/project-sql.jpg";
-import projExpense from "@/assets/project-expense.jpg";
+import projTeen from "@/assets/project-teen.jpg";
+import projProfessor from "@/assets/project-professor.jpg";
 
 /* ------------------------------- Data ------------------------------- */
 
