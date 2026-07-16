@@ -12,7 +12,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
-import profileImg from "@/assets/profile.jpg";
+import profileAsset from "@/assets/sinan-profile.png.asset.json";
+const profileImg = profileAsset.url;
 import projSales from "@/assets/project-sales.jpg";
 import projPrime from "@/assets/project-prime.jpg";
 import projBooks from "@/assets/project-books.jpg";
@@ -437,13 +438,15 @@ function Hero() {
 
         <div className="relative mx-auto w-full max-w-md animate-fade-up" style={{ animationDelay: "150ms" }}>
           <div className="absolute -inset-6 rounded-[2rem] bg-gradient-primary opacity-30 blur-2xl" />
-          <div className="glass relative overflow-hidden rounded-[2rem] p-2 shadow-elegant">
+          <div className="glass relative overflow-hidden rounded-[2rem] p-2 shadow-elegant ring-1 ring-primary/30">
             <img
               src={profileImg}
               alt="Muhammed Sinan U T — Data Analyst"
-              width={1024}
-              height={1280}
-              className="h-auto w-full rounded-[1.6rem] object-cover"
+              width={892}
+              height={1029}
+              loading="eager"
+              decoding="async"
+              className="h-auto w-full rounded-[1.6rem] object-cover object-center"
             />
           </div>
           <div className="glass absolute -bottom-6 -left-6 hidden rounded-2xl p-4 shadow-card md:block">
@@ -488,8 +491,8 @@ function About() {
         <Reveal>
           <div className="relative">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-accent opacity-20 blur-xl" />
-            <Card className="glass relative overflow-hidden rounded-3xl border-primary/10 p-1">
-              <img src={profileImg} alt="Portrait" loading="lazy" className="h-full w-full rounded-3xl object-cover" />
+            <Card className="glass relative overflow-hidden rounded-3xl border-primary/20 p-1 shadow-elegant ring-1 ring-primary/25">
+              <img src={profileImg} alt="Muhammed Sinan U T" loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full rounded-[1.35rem] object-cover object-center" />
             </Card>
           </div>
         </Reveal>
