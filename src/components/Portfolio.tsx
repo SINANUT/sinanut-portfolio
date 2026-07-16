@@ -15,11 +15,11 @@ import { cn } from "@/lib/utils";
 import profileAsset from "@/assets/sinan-profile.png.asset.json";
 const profileImg = profileAsset.url;
 import projSales from "@/assets/project-sales.jpg";
-import projPrime from "@/assets/project-prime.jpg";
 import projBooks from "@/assets/project-books.jpg";
 import projSalary from "@/assets/project-salary.jpg";
 import projSql from "@/assets/project-sql.jpg";
-import projExpense from "@/assets/project-expense.jpg";
+import projTeen from "@/assets/project-teen.jpg";
+import projProfessor from "@/assets/project-professor.jpg";
 
 /* ------------------------------- Data ------------------------------- */
 
@@ -59,52 +59,94 @@ const SKILL_GROUPS: { title: string; icon: typeof Code2; skills: string[] }[] = 
 
 const PROJECTS = [
   {
-    title: "Sales Dashboard",
+    title: "Teen Wellbeing Dashboard",
     tag: "Power BI",
-    desc: "Interactive executive dashboard tracking revenue, profit margins, regional sales and product performance across quarters.",
-    tech: ["Power BI", "DAX", "Power Query", "Excel"],
+    problem: "Analyze the relationship between social media usage and student wellbeing across stress, sleep and academic performance.",
+    desc: "End-to-end Power BI dashboard exploring how platform usage patterns influence teen stress, sleep quality and GPA. Built with KPI cards, interactive filters and comparative platform views.",
+    tech: ["Power BI", "DAX", "Power Query"],
+    insights: [
+      "Heavy Instagram + TikTok users report 32% higher stress scores",
+      "Under 6 hrs sleep correlates with a 0.6 GPA drop on average",
+      "Weekend usage spikes 2.1× vs weekdays — key intervention window",
+    ],
+    image: projTeen,
+    featured: true,
+    github: "https://github.com/SINANUT",
+  },
+  {
+    title: "Amazon Sales Dashboard",
+    tag: "Power BI",
+    problem: "Analyze sales performance, product categories and regional trends to guide inventory and marketing decisions.",
+    desc: "Executive Power BI report tracking revenue trends, top-performing categories and regional sales. Fully interactive with drill-through for category and geography.",
+    tech: ["Power BI", "DAX", "Excel"],
+    insights: [
+      "Top 3 categories drive 61% of total revenue",
+      "West region outperforms by 24% YoY — expansion candidate",
+      "Q4 accounts for 38% of annual sales — plan stock 8 weeks ahead",
+    ],
     image: projSales,
     featured: true,
+    github: "https://github.com/SINANUT",
   },
   {
-    title: "Amazon Prime Analytics",
-    tag: "Tableau",
-    desc: "Explored Prime Video catalog to uncover genre trends, release patterns and rating distributions across a decade.",
-    tech: ["Tableau", "Python", "Pandas"],
-    image: projPrime,
-    featured: true,
-  },
-  {
-    title: "Book Data Analysis",
-    tag: "Python",
-    desc: "Cleaned and analyzed 100k+ book records to surface reader preferences, top-rated authors and pricing insights.",
-    tech: ["Python", "Pandas", "Seaborn", "Matplotlib"],
-    image: projBooks,
-    featured: false,
-  },
-  {
-    title: "Salary Analysis",
-    tag: "Python",
-    desc: "Cross-industry salary study across roles, geographies and experience — with interactive statistical insights.",
-    tech: ["Python", "NumPy", "Plotly"],
-    image: projSalary,
-    featured: false,
-  },
-  {
-    title: "SQL Employee Analysis",
+    title: "SQL Employee Data Analysis",
     tag: "SQL",
-    desc: "Advanced SQL queries on an HR database — attrition, tenure, compensation bands and department performance.",
-    tech: ["MySQL", "CTE", "Window Functions"],
+    problem: "Analyze employee records to identify department statistics, salary trends and workforce insights.",
+    desc: "Advanced SQL analysis on an HR database using CTEs, window functions and joins to surface tenure, compensation gaps and department performance.",
+    tech: ["MySQL", "SQL", "CTEs", "Window Functions"],
+    insights: [
+      "12% pay gap across two departments for the same role level",
+      "Engineering has 3× lower attrition than Sales",
+      "Median tenure is 4.2 years — retention above industry average",
+    ],
     image: projSql,
     featured: false,
+    github: "https://github.com/SINANUT",
   },
   {
-    title: "Expense Tracker",
-    tag: "Full Stack",
-    desc: "Personal finance analytics app with categorization, monthly trends and budget-vs-actual reporting.",
-    tech: ["Python", "Streamlit", "SQLite"],
-    image: projExpense,
+    title: "Salary Data Analysis",
+    tag: "Python",
+    problem: "Perform exploratory data analysis to identify salary distribution and job role trends across the tech industry.",
+    desc: "Python EDA on a multi-year salary dataset — distributions, outliers, role-level medians and experience-based growth curves visualized with Matplotlib.",
+    tech: ["Python", "Pandas", "NumPy", "Matplotlib"],
+    insights: [
+      "Data roles show a 1.8× salary jump from junior to senior",
+      "Remote roles pay 14% more than on-site equivalents",
+      "Top 10% earners cluster in 3 metros — market concentration",
+    ],
+    image: projSalary,
     featured: false,
+    github: "https://github.com/SINANUT",
+  },
+  {
+    title: "Books EDA",
+    tag: "Python",
+    problem: "Analyze book data to identify patterns and reader insights through exploratory data analysis.",
+    desc: "Cleaned and profiled a large book catalog to surface top-rated authors, pricing bands and genre preferences using Pandas and visual EDA.",
+    tech: ["Python", "Pandas", "Matplotlib"],
+    insights: [
+      "Ratings above 4.3 command a 22% price premium",
+      "Fiction dominates volume; non-fiction leads margin",
+      "Series titles average 1.6× more reviews than standalones",
+    ],
+    image: projBooks,
+    featured: false,
+    github: "https://github.com/SINANUT",
+  },
+  {
+    title: "ProfessorGPT",
+    tag: "AI",
+    problem: "Develop an AI-powered teaching assistant that generates structured educational explanations for students.",
+    desc: "Streamlit app powered by the OpenAI API that turns any topic into a structured lesson — objectives, explanation, examples and a quick check.",
+    tech: ["Python", "Streamlit", "OpenAI API"],
+    insights: [
+      "Structured prompt template cut hallucinations vs freeform chat",
+      "Lesson-shaped output improves student recall in early tests",
+      "Ships as a single-file Streamlit app — zero infra to deploy",
+    ],
+    image: projProfessor,
+    featured: true,
+    github: "https://github.com/SINANUT",
   },
 ];
 
@@ -594,11 +636,11 @@ function Projects() {
   return (
     <Section id="projects">
       <SectionHeader
-        eyebrow="Projects"
-        title="Selected work"
-        subtitle="Hand-picked case studies spanning Power BI, Tableau, Python and SQL."
+        eyebrow="Case Studies"
+        title="Featured case studies"
+        subtitle="Real analytics work — the business problem, the tools I reached for, and the insight that mattered."
       />
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-2">
         {PROJECTS.map((p, i) => (
           <Reveal key={p.title} delay={i * 80}>
             <Card className="glass group relative flex h-full flex-col overflow-hidden rounded-3xl border-primary/10 p-0 transition-all duration-500 hover-lift">
@@ -607,34 +649,72 @@ function Projects() {
                   <Star className="mr-1 h-3 w-3" /> Featured
                 </Badge>
               )}
-              <div className="relative aspect-[16/10] overflow-hidden">
+
+              <div className="relative aspect-[16/9] overflow-hidden">
                 <img
                   src={p.image}
-                  alt={p.title}
+                  alt={`${p.title} preview`}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  width={1024}
+                  height={576}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
                 <Badge variant="outline" className="absolute bottom-4 left-4 glass border-primary/30 text-xs">
                   {p.tag}
                 </Badge>
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-semibold">{p.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
+
+              <div className="flex flex-1 flex-col p-7 md:p-8">
+                <h3 className="text-2xl font-semibold tracking-tight md:text-[1.6rem]">{p.title}</h3>
+
+                <div className="mt-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary/80">
+                    Business Problem
+                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.problem}</p>
+                </div>
+
+                <p className="mt-4 text-sm leading-relaxed text-foreground/80">{p.desc}</p>
+
+                <div className="mt-5 flex flex-wrap gap-1.5">
                   {p.tech.map((t) => (
-                    <span key={t} className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+                    <span
+                      key={t}
+                      className="rounded-md border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-foreground/90"
+                    >
                       {t}
                     </span>
                   ))}
                 </div>
-                <div className="mt-5 flex gap-2">
+
+                <div className="mt-6 rounded-2xl border border-primary/10 bg-background/40 p-5">
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4 text-accent" />
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">
+                      Key Insights
+                    </p>
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {p.insights.map((ins) => (
+                      <li key={ins} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
+                        <Check className="mt-0.5 h-4 w-4 flex-none text-primary" />
+                        <span>{ins}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-auto flex flex-wrap gap-2 pt-6">
                   <Button asChild size="sm" variant="outline" className="glass border-primary/30">
-                    <a href="#"><Github className="mr-1.5 h-3.5 w-3.5" /> Code</a>
+                    <a href={p.github} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-1.5 h-3.5 w-3.5" /> GitHub
+                    </a>
                   </Button>
-                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground">
-                    <a href="#"><ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Live</a>
+                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground shadow-elegant">
+                    <a href={p.github} target="_blank" rel="noopener noreferrer">
+                      View Case Study <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                    </a>
                   </Button>
                 </div>
               </div>
