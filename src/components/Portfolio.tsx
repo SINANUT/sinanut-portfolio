@@ -20,6 +20,11 @@ import projSalary from "@/assets/project-salary.jpg";
 import projSql from "@/assets/project-sql.jpg";
 import projTeen from "@/assets/project-teen.jpg";
 import projProfessor from "@/assets/project-professor.jpg";
+import certPdfAsset from "@/assets/haca-certificate.pdf.asset.json";
+import certThumbAsset from "@/assets/haca-certificate-thumb.jpg.asset.json";
+const CERT_PDF_URL = certPdfAsset.url;
+const CERT_THUMB_URL = certThumbAsset.url;
+
 
 /* ------------------------------- Data ------------------------------- */
 
