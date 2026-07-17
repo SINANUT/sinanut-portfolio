@@ -1146,70 +1146,258 @@ function Resume() {
 }
 
 
-/* ------------------------------ GitHub ------------------------------ */
+/* ------------------------------ GitHub Showcase ------------------------------ */
 
 function GitHubSection() {
+  const initials = "MS";
   return (
     <Section id="github">
-      <SectionHeader eyebrow="GitHub" title="Building in the open" />
-      <Card className="glass rounded-3xl border-primary/10 p-8 md:p-10">
-        <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
-          <div>
-            <div className="flex items-center gap-4">
-              <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-primary shadow-glow">
-                <Github className="h-7 w-7 text-primary-foreground" />
-              </div>
-              <div>
-                <p className="font-semibold text-lg">@SINANUT</p>
-                <p className="text-sm text-muted-foreground">Data Analyst · {LOCATION}</p>
-              </div>
+      <SectionHeader
+        eyebrow="GitHub"
+        title="GitHub Showcase"
+        subtitle="A curated look at the repositories where I ship analytics work in the open."
+      />
 
-            </div>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              {[
-                { k: "Repos", v: "28" },
-                { k: "Stars", v: "142" },
-                { k: "Streak", v: "47d" },
-              ].map((s) => (
-                <div key={s.k} className="rounded-2xl border border-border/50 p-3 text-center">
-                  <p className="font-display text-xl font-bold text-gradient">{s.v}</p>
-                  <p className="text-[11px] uppercase tracking-widest text-muted-foreground">{s.k}</p>
-                </div>
-              ))}
-            </div>
-            <Button asChild className="mt-6 w-full bg-gradient-primary text-primary-foreground">
-              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> View Profile</a>
-            </Button>
+      {/* Profile card */}
+      <Reveal>
+        <Card className="glass relative overflow-hidden rounded-3xl border-primary/10 p-8 shadow-card md:p-10">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
-          </div>
-          <div>
-            <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">Contribution activity</p>
-            <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-1">
-              {Array.from({ length: 26 * 7 }).map((_, i) => {
-                const intensity = Math.floor(Math.random() * 5);
-                const bg = ["bg-muted/60", "bg-primary/20", "bg-primary/40", "bg-primary/70", "bg-primary"][intensity];
-                return <span key={i} className={cn("aspect-square rounded-[3px]", bg)} />;
-              })}
+          <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
+            <div className="relative">
+              <div className="absolute -inset-2 rounded-full bg-gradient-primary opacity-40 blur-lg" />
+              <div className="relative grid h-24 w-24 place-items-center rounded-full bg-gradient-primary text-3xl font-bold text-primary-foreground shadow-elegant ring-2 ring-primary/40">
+                {initials}
+              </div>
             </div>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {[
-                { n: "sales-dashboard-powerbi", d: "Executive sales dashboard with DAX measures." },
-                { n: "python-salary-analysis", d: "Cross-industry salary study using Pandas." },
-                { n: "sql-employee-insights", d: "Advanced SQL analytics on HR data." },
-                { n: "prime-video-tableau", d: "Prime Video catalog exploration in Tableau." },
-              ].map((r) => (
-                <div key={r.n} className="rounded-xl border border-border/50 p-4 transition-colors hover:border-primary/40">
-                  <p className="font-mono text-sm text-primary">{r.n}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{r.d}</p>
-                </div>
-              ))}
+
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-2xl font-bold md:text-3xl">Muhammed Sinan U T</h3>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> Active
+                </span>
+              </div>
+              <p className="mt-1 font-mono text-sm text-primary">@SINANUT</p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                Passionate about building practical analytics solutions through SQL, Python, Power BI and Business Intelligence.
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-primary" /> {LOCATION}</span>
+                <span className="inline-flex items-center gap-1.5"><Github className="h-3.5 w-3.5" /> github.com/SINANUT</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+                <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> View Profile</a>
+              </Button>
+              <div className="grid grid-cols-3 gap-2">
+                {[{ k: "Repos", v: "20+" }, { k: "Stars", v: "120+" }, { k: "Streak", v: "45d" }].map((s) => (
+                  <div key={s.k} className="rounded-xl border border-border/50 bg-background/40 px-2 py-2 text-center">
+                    <p className="font-display text-sm font-bold text-gradient">{s.v}</p>
+                    <p className="text-[9px] uppercase tracking-widest text-muted-foreground">{s.k}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </Reveal>
+
+      {/* Repositories */}
+      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {REPOS.map((r, i) => (
+          <Reveal key={r.name} delay={i * 50}>
+            <Card className="glass group flex h-full flex-col rounded-2xl border-primary/10 p-6 shadow-card transition-all hover-lift">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <Github className="h-4 w-4 text-primary" />
+                  <p className="font-mono text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors">{r.name}</p>
+                </div>
+                <span className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-primary">Public</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {r.tech.map((t) => (
+                  <span key={t} className="rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-foreground/90">{t}</span>
+                ))}
+              </div>
+              <div className="mt-auto flex items-center justify-between pt-5">
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1"><Star className="h-3.5 w-3.5 text-accent" /> {r.stars ?? 0}</span>
+                  <span className="inline-flex items-center gap-1"><Layers className="h-3.5 w-3.5" /> {r.forks ?? 0}</span>
+                </div>
+                <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                  <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+                    <Github className="mr-1.5 h-3.5 w-3.5" /> View
+                  </a>
+                </Button>
+              </div>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* Contribution graph */}
+      <Reveal delay={100}>
+        <Card className="glass mt-10 rounded-3xl border-primary/10 p-6 md:p-8">
+          <div className="mb-4 flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Contribution activity</p>
+            <p className="text-xs text-muted-foreground">Last 26 weeks</p>
+          </div>
+          <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-1">
+            {Array.from({ length: 26 * 7 }).map((_, i) => {
+              const intensity = Math.floor(Math.random() * 5);
+              const bg = ["bg-muted/60", "bg-primary/20", "bg-primary/40", "bg-primary/70", "bg-primary"][intensity];
+              return <span key={i} className={cn("aspect-square rounded-[3px] transition-transform hover:scale-125", bg)} />;
+            })}
+          </div>
+          <div className="mt-4 flex items-center justify-end gap-2 text-[10px] uppercase tracking-widest text-muted-foreground">
+            Less
+            {["bg-muted/60", "bg-primary/20", "bg-primary/40", "bg-primary/70", "bg-primary"].map((c, i) => (
+              <span key={i} className={cn("h-3 w-3 rounded-[3px]", c)} />
+            ))}
+            More
+          </div>
+        </Card>
+      </Reveal>
     </Section>
   );
 }
+
+/* ------------------------------ Dashboard Gallery ------------------------------ */
+
+function DashboardGallery() {
+  return (
+    <Section id="gallery">
+      <SectionHeader
+        eyebrow="Dashboard Gallery"
+        title="Dashboard Gallery"
+        subtitle="Interactive Business Intelligence Dashboards"
+      />
+      <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
+        {DASHBOARDS.map((d, i) => (
+          <Reveal key={d.title} delay={i * 80}>
+            <Card className="glass group flex h-full flex-col overflow-hidden rounded-3xl border-primary/10 p-0 shadow-card transition-all hover-lift">
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img
+                  src={d.image}
+                  alt={`${d.title} preview`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <Badge className="absolute right-4 top-4 border-none bg-gradient-accent text-accent-foreground shadow-glow">
+                  <BarChart3 className="mr-1 h-3 w-3" /> Power BI
+                </Badge>
+              </div>
+              <div className="flex flex-1 flex-col p-7 md:p-8">
+                <h3 className="text-2xl font-semibold tracking-tight">{d.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d.objective}</p>
+
+                <div className="mt-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary/80">Key KPIs</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {d.kpis.map((k) => (
+                      <span key={k} className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-foreground/90">{k}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">Tools Used</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {d.tools.map((t) => (
+                      <span key={t} className="rounded-md border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] font-medium text-accent">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------ Why Work With Me ------------------------------ */
+
+function WhyWorkWithMe() {
+  return (
+    <Section id="why">
+      <SectionHeader eyebrow="Why Me" title="Why Work With Me" />
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {WHY_CARDS.map((w, i) => (
+          <Reveal key={w.title} delay={i * 70}>
+            <Card className="glass group h-full rounded-3xl border-primary/10 p-7 shadow-card transition-all hover-lift">
+              <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-primary shadow-glow transition-transform group-hover:scale-110 group-hover:rotate-6">
+                <w.icon className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <h3 className="font-display text-lg font-semibold">{w.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.desc}</p>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------ CTA ------------------------------ */
+
+function CTASection() {
+  return (
+    <section className="relative py-24 md:py-32">
+      <div className="mx-auto w-full max-w-6xl px-6">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/20 p-10 shadow-elegant md:p-16">
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-10 animate-shimmer"
+              style={{
+                background:
+                  "linear-gradient(120deg, oklch(0.35 0.15 262 / 0.6), oklch(0.5 0.18 258 / 0.5), oklch(0.78 0.16 75 / 0.35), oklch(0.35 0.15 262 / 0.6))",
+                backgroundSize: "300% 100%",
+              }}
+            />
+            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary/30 blur-3xl animate-glow-pulse" />
+            <div className="pointer-events-none absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-accent/20 blur-3xl animate-glow-pulse" />
+
+            <div className="relative text-center">
+              <Badge variant="outline" className="glass mb-5 border-primary/30 px-3 py-1 text-xs uppercase tracking-widest text-primary">
+                <Sparkles className="mr-1.5 h-3 w-3" /> Let's Collaborate
+              </Badge>
+              <h2 className="mx-auto max-w-3xl text-balance text-4xl font-bold md:text-5xl lg:text-6xl">
+                Let's Build Something <span className="text-gradient">Data-Driven</span> Together
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">
+                Whether you have an opportunity, collaboration, or simply want to discuss analytics, I'm always happy to connect.
+              </p>
+              <div className="mt-9 flex flex-wrap justify-center gap-3">
+                <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+                  <a href="#resume"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                  <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> GitHub</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                  <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-4 w-4" /> LinkedIn</a>
+                </Button>
+                <Button asChild size="lg" variant="ghost">
+                  <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Contact Me</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 
 /* ------------------------------ Contact ------------------------------ */
 
