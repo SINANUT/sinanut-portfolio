@@ -218,6 +218,21 @@ const JOURNEY: {
   },
 ];
 
+const SERVICES = [
+  { icon: BarChart3, title: "Power BI Dashboards", desc: "Executive dashboards with DAX measures, row-level security and scheduled refresh." },
+  { icon: FileText, title: "Excel Automation", desc: "Advanced formulas, macros and Power Query flows that eliminate hours of manual work." },
+  { icon: Sparkles, title: "Data Cleaning", desc: "Turn messy, inconsistent CSVs into analysis-ready datasets with reproducible pipelines." },
+  { icon: TrendingUp, title: "Business Intelligence", desc: "KPI frameworks, star schemas and semantic models built to scale with your business." },
+  { icon: Database, title: "SQL Analysis", desc: "Complex queries, CTEs and window functions to answer any question hiding in your data." },
+  { icon: Terminal, title: "Python Analysis", desc: "Pandas, NumPy and statistical modeling for deep exploratory analysis and reporting." },
+];
+
+const TESTIMONIALS = [
+  { name: "Ananya Rao", role: "Product Manager, FinEdge", quote: "Sinan turned our messy sales data into a Power BI dashboard the entire leadership team relies on. Fast, precise and thoughtful." },
+  { name: "David Chen", role: "Founder, Loopstack", quote: "Rare combination of analytical depth and business sense. He asked the right questions before writing a single query." },
+  { name: "Priya Menon", role: "Ops Lead, GreenCart", quote: "Delivered ahead of schedule, documented everything and made the handover effortless. Would hire again in a heartbeat." },
+];
+
 const STATS = [
   { label: "Projects Completed", value: 6, suffix: "+" },
   { label: "Power BI Dashboards", value: 4, suffix: "+" },
