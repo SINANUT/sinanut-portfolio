@@ -155,46 +155,76 @@ const PROJECTS = [
   },
 ];
 
-const EXPERIENCE = [
-  { role: "Data Analytics Intern", org: "HACA (Higher Academy for Career Advancement)", when: "2024",
-    desc: "Completed an intensive data analytics internship covering Python, SQL, Power BI and Excel. Built end-to-end analytics projects — from data cleaning and EDA to dashboarding and business storytelling." },
-  { role: "Freelance BI & Dashboard Developer", org: "Independent", when: "2024 — Present",
-    desc: "Designed Power BI and Excel dashboards for small businesses, automating weekly reporting and translating raw operational data into decision-ready insights." },
-  { role: "Personal Data Projects", org: "Self-directed", when: "2023 — Present",
-    desc: "Shipped 15+ end-to-end analytics projects on GitHub across Python, SQL, Power BI and Tableau — focused on real-world business questions." },
-];
-
-
-const CERTS = [
-  "Microsoft Power BI Data Analyst",
-  "Google Data Analytics Professional",
-  "Python for Data Science — IBM",
-  "SQL Advanced — HackerRank",
-  "Tableau Desktop Specialist",
-  "Excel — Business Analytics",
-];
-
-const SERVICES = [
-  { icon: BarChart3, title: "Power BI Dashboards", desc: "Executive dashboards with DAX measures, row-level security and scheduled refresh." },
-  { icon: FileText, title: "Excel Automation", desc: "Advanced formulas, macros and Power Query flows that eliminate hours of manual work." },
-  { icon: Sparkles, title: "Data Cleaning", desc: "Turn messy, inconsistent CSVs into analysis-ready datasets with reproducible pipelines." },
-  { icon: TrendingUp, title: "Business Intelligence", desc: "KPI frameworks, star schemas and semantic models built to scale with your business." },
-  { icon: Database, title: "SQL Analysis", desc: "Complex queries, CTEs and window functions to answer any question hiding in your data." },
-  { icon: Terminal, title: "Python Analysis", desc: "Pandas, NumPy and statistical modeling for deep exploratory analysis and reporting." },
-];
-
-const TESTIMONIALS = [
-  { name: "Ananya Rao", role: "Product Manager, FinEdge", quote: "Sinan turned our messy sales data into a Power BI dashboard the entire leadership team relies on. Fast, precise and thoughtful." },
-  { name: "David Chen", role: "Founder, Loopstack", quote: "Rare combination of analytical depth and business sense. He asked the right questions before writing a single query." },
-  { name: "Priya Menon", role: "Ops Lead, GreenCart", quote: "Delivered ahead of schedule, documented everything and made the handover effortless. Would hire again in a heartbeat." },
+type JourneyKind = "education" | "training" | "internship" | "present";
+const JOURNEY: {
+  when: string;
+  title: string;
+  org: string;
+  desc: string;
+  bullets?: string[];
+  kind: JourneyKind;
+  icon: typeof GraduationCap;
+  highlight?: boolean;
+  badge?: string;
+}[] = [
+  {
+    when: "2022 — 2025",
+    title: "Bachelor of Arts in Economics",
+    org: "University of Calicut",
+    desc: "Built a strong foundation in analytical thinking, research, statistics and problem-solving while developing an early interest in business decision-making through data.",
+    kind: "education",
+    icon: GraduationCap,
+  },
+  {
+    when: "2025 — 2026",
+    title: "Advanced Data Analytics with AI",
+    org: "Haris & Co. Academy (HACA)",
+    desc: "Industry-focused Data Analytics program covering the full modern analyst stack.",
+    bullets: [
+      "SQL · Python · Excel",
+      "Power BI · Tableau",
+      "Data Cleaning · EDA",
+      "Dashboard Development",
+      "Business Intelligence · AI-assisted Analytics",
+    ],
+    kind: "training",
+    icon: Brain,
+  },
+  {
+    when: "Nov 2025 — Apr 2026",
+    title: "Data Analyst Intern",
+    org: "Haris & Co. Academy (HACA)",
+    desc: "Worked on real business datasets and analytical workflows end to end.",
+    bullets: [
+      "Cleaned and transformed datasets using SQL and Python",
+      "Built interactive Power BI dashboards",
+      "Performed exploratory data analysis on real datasets",
+      "Prepared KPI dashboards and stakeholder reports",
+      "Communicated insights to non-technical stakeholders",
+    ],
+    kind: "internship",
+    icon: Briefcase,
+    highlight: true,
+    badge: "Industry Experience",
+  },
+  {
+    when: "Present",
+    title: "Open to Opportunities",
+    org: "Data Analyst · BI Analyst · Power BI Developer",
+    desc: "Actively seeking full-time roles where I can turn data into measurable business outcomes.",
+    kind: "present",
+    icon: Sparkles,
+    badge: "Available for Hire",
+  },
 ];
 
 const STATS = [
-  { label: "Projects Completed", value: 42, suffix: "+" },
-  { label: "Dashboards Created", value: 60, suffix: "+" },
-  { label: "Datasets Analyzed", value: 120, suffix: "+" },
-  { label: "Hours of Learning", value: 2400, suffix: "+" },
+  { label: "Projects Completed", value: 6, suffix: "+" },
+  { label: "Power BI Dashboards", value: 4, suffix: "+" },
+  { label: "SQL & Python Projects", value: 6, suffix: "+" },
+  { label: "Industry Experience", value: 1, suffix: "", unit: "Internship" },
 ];
+
 
 /* ------------------------------ Hooks ------------------------------ */
 
