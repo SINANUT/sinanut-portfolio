@@ -38,6 +38,7 @@ const NAV = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "gallery", label: "Gallery" },
   { id: "journey", label: "Journey" },
   { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
