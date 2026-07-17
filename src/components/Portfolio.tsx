@@ -20,6 +20,11 @@ import projSalary from "@/assets/project-salary.jpg";
 import projSql from "@/assets/project-sql.jpg";
 import projTeen from "@/assets/project-teen.jpg";
 import projProfessor from "@/assets/project-professor.jpg";
+import certPdfAsset from "@/assets/haca-certificate.pdf.asset.json";
+import certThumbAsset from "@/assets/haca-certificate-thumb.jpg.asset.json";
+const CERT_PDF_URL = certPdfAsset.url;
+const CERT_THUMB_URL = certThumbAsset.url;
+
 
 /* ------------------------------- Data ------------------------------- */
 
@@ -33,11 +38,11 @@ const NAV = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
+  { id: "journey", label: "Journey" },
   { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
 ];
+
 
 const TITLES = [
   "Data Analyst",
@@ -150,23 +155,67 @@ const PROJECTS = [
   },
 ];
 
-const EXPERIENCE = [
-  { role: "Data Analytics Intern", org: "HACA (Higher Academy for Career Advancement)", when: "2024",
-    desc: "Completed an intensive data analytics internship covering Python, SQL, Power BI and Excel. Built end-to-end analytics projects — from data cleaning and EDA to dashboarding and business storytelling." },
-  { role: "Freelance BI & Dashboard Developer", org: "Independent", when: "2024 — Present",
-    desc: "Designed Power BI and Excel dashboards for small businesses, automating weekly reporting and translating raw operational data into decision-ready insights." },
-  { role: "Personal Data Projects", org: "Self-directed", when: "2023 — Present",
-    desc: "Shipped 15+ end-to-end analytics projects on GitHub across Python, SQL, Power BI and Tableau — focused on real-world business questions." },
-];
-
-
-const CERTS = [
-  "Microsoft Power BI Data Analyst",
-  "Google Data Analytics Professional",
-  "Python for Data Science — IBM",
-  "SQL Advanced — HackerRank",
-  "Tableau Desktop Specialist",
-  "Excel — Business Analytics",
+type JourneyKind = "education" | "training" | "internship" | "present";
+const JOURNEY: {
+  when: string;
+  title: string;
+  org: string;
+  desc: string;
+  bullets?: string[];
+  kind: JourneyKind;
+  icon: typeof GraduationCap;
+  highlight?: boolean;
+  badge?: string;
+}[] = [
+  {
+    when: "2022 — 2025",
+    title: "Bachelor of Arts in Economics",
+    org: "University of Calicut",
+    desc: "Built a strong foundation in analytical thinking, research, statistics and problem-solving while developing an early interest in business decision-making through data.",
+    kind: "education",
+    icon: GraduationCap,
+  },
+  {
+    when: "2025 — 2026",
+    title: "Advanced Data Analytics with AI",
+    org: "Haris & Co. Academy (HACA)",
+    desc: "Industry-focused Data Analytics program covering the full modern analyst stack.",
+    bullets: [
+      "SQL · Python · Excel",
+      "Power BI · Tableau",
+      "Data Cleaning · EDA",
+      "Dashboard Development",
+      "Business Intelligence · AI-assisted Analytics",
+    ],
+    kind: "training",
+    icon: Brain,
+  },
+  {
+    when: "Nov 2025 — Apr 2026",
+    title: "Data Analyst Intern",
+    org: "Haris & Co. Academy (HACA)",
+    desc: "Worked on real business datasets and analytical workflows end to end.",
+    bullets: [
+      "Cleaned and transformed datasets using SQL and Python",
+      "Built interactive Power BI dashboards",
+      "Performed exploratory data analysis on real datasets",
+      "Prepared KPI dashboards and stakeholder reports",
+      "Communicated insights to non-technical stakeholders",
+    ],
+    kind: "internship",
+    icon: Briefcase,
+    highlight: true,
+    badge: "Industry Experience",
+  },
+  {
+    when: "Present",
+    title: "Open to Opportunities",
+    org: "Data Analyst · BI Analyst · Power BI Developer",
+    desc: "Actively seeking full-time roles where I can turn data into measurable business outcomes.",
+    kind: "present",
+    icon: Sparkles,
+    badge: "Available for Hire",
+  },
 ];
 
 const SERVICES = [
@@ -185,11 +234,12 @@ const TESTIMONIALS = [
 ];
 
 const STATS = [
-  { label: "Projects Completed", value: 42, suffix: "+" },
-  { label: "Dashboards Created", value: 60, suffix: "+" },
-  { label: "Datasets Analyzed", value: 120, suffix: "+" },
-  { label: "Hours of Learning", value: 2400, suffix: "+" },
+  { label: "Projects Completed", value: 6, suffix: "+" },
+  { label: "Power BI Dashboards", value: 4, suffix: "+" },
+  { label: "SQL & Python Projects", value: 6, suffix: "+" },
+  { label: "Industry Experience", value: 1, suffix: "", unit: "Internship" },
 ];
+
 
 /* ------------------------------ Hooks ------------------------------ */
 
@@ -726,113 +776,184 @@ function Projects() {
   );
 }
 
-/* ------------------------------ Stats ------------------------------ */
+/* --------------------- Career Journey + Achievements + Cert --------------------- */
+
+const KIND_STYLES: Record<JourneyKind, { chip: string; ring: string; label: string }> = {
+  education: { chip: "bg-primary/15 text-primary border-primary/30", ring: "ring-primary/30", label: "Education" },
+  training: { chip: "bg-secondary/20 text-secondary-foreground border-secondary/30", ring: "ring-secondary/30", label: "Training" },
+  internship: { chip: "bg-accent/20 text-accent border-accent/40", ring: "ring-accent/40", label: "Internship" },
+  present: { chip: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30", ring: "ring-emerald-500/30", label: "Now" },
+};
+
+function JourneyItem({ step, index }: { step: (typeof JOURNEY)[number]; index: number }) {
+  const styles = KIND_STYLES[step.kind];
+  const Icon = step.icon;
+  return (
+    <Reveal delay={index * 90}>
+      <div className="relative mb-10 last:mb-0">
+        <span
+          className={cn(
+            "absolute -left-[46px] top-3 grid h-9 w-9 place-items-center rounded-full shadow-glow ring-4",
+            step.highlight ? "bg-gradient-accent ring-accent/20" : "bg-gradient-primary ring-primary/20",
+          )}
+        >
+          <Icon className="h-4 w-4 text-primary-foreground" />
+        </span>
+
+        <Card
+          className={cn(
+            "glass rounded-3xl border-primary/10 p-6 md:p-7 transition-all duration-500 hover-lift",
+            step.highlight && "ring-1 ring-accent/40 shadow-elegant",
+          )}
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <span className={cn("rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest", styles.chip)}>
+              {styles.label}
+            </span>
+            {step.badge && (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                {step.badge}
+              </span>
+            )}
+            <span className="ml-auto inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Calendar className="h-3 w-3" /> {step.when}
+            </span>
+          </div>
+
+          <h3 className="mt-3 text-xl font-semibold tracking-tight md:text-2xl">{step.title}</h3>
+          <p className="mt-1 text-sm font-medium text-primary">{step.org}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
+
+          {step.bullets && (
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+              {step.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-2 text-sm text-foreground/85">
+                  <Check className="mt-0.5 h-4 w-4 flex-none text-primary" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+      </div>
+    </Reveal>
+  );
+}
 
 function StatItem({ stat }: { stat: (typeof STATS)[number] }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.4);
   const value = useCounter(stat.value, inView);
   return (
-    <div ref={ref} className="glass rounded-3xl p-8 text-center hover-lift">
-      <p className="font-display text-5xl font-bold text-gradient md:text-6xl">
+    <div ref={ref} className="glass rounded-3xl p-6 text-center hover-lift md:p-8">
+      <p className="font-display text-4xl font-bold text-gradient md:text-5xl">
         {value}{stat.suffix}
       </p>
-      <p className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">{stat.label}</p>
+      {stat.unit && <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
+      <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground md:text-sm">{stat.label}</p>
     </div>
   );
 }
 
-function Stats() {
+function CareerJourney() {
   return (
-    <Section id="stats" className="!py-16">
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-        {STATS.map((s) => <StatItem key={s.label} stat={s} />)}
-      </div>
-    </Section>
-  );
-}
+    <Section id="journey">
+      <SectionHeader
+        eyebrow="Career Journey"
+        title="Career Journey"
+        subtitle="My transition from Economics to Data Analytics through continuous learning, practical projects and real-world business analytics."
+      />
 
-/* ------------------------------ Experience ------------------------------ */
-
-function Experience() {
-  return (
-    <Section id="experience">
-      <SectionHeader eyebrow="Experience" title="A track record of shipping" />
       <div className="mx-auto max-w-4xl">
-        <div className="relative border-l-2 border-primary/20 pl-8">
-          {EXPERIENCE.map((e, i) => (
-            <Reveal key={e.role} delay={i * 100}>
-              <div className="relative mb-10">
-                <span className="absolute -left-[41px] top-2 grid h-6 w-6 place-items-center rounded-full bg-gradient-primary shadow-glow">
-                  <Briefcase className="h-3 w-3 text-primary-foreground" />
-                </span>
-                <Card className="glass rounded-2xl border-primary/10 p-6">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="text-lg font-semibold">{e.role}</h3>
-                    <span className="text-xs text-muted-foreground flex items-center gap-1.5">
-                      <Calendar className="h-3 w-3" /> {e.when}
-                    </span>
-                  </div>
-                  <p className="text-sm text-primary">{e.org}</p>
-                  <p className="mt-3 text-sm text-muted-foreground">{e.desc}</p>
-                </Card>
-              </div>
-            </Reveal>
+        <div className="relative border-l-2 border-dashed border-primary/25 pl-10">
+          {JOURNEY.map((step, i) => (
+            <JourneyItem key={step.title} step={step} index={i} />
           ))}
         </div>
       </div>
-    </Section>
-  );
-}
 
-/* ---------------------- Education & Certifications ---------------------- */
-
-function EducationAndCerts() {
-  return (
-    <Section id="education">
-      <div className="grid gap-8 lg:grid-cols-2">
+      {/* Achievements */}
+      <div className="mt-20">
         <Reveal>
-          <Card className="glass h-full rounded-3xl border-primary/10 p-8">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-primary">
-                <GraduationCap className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-semibold">Education</h3>
-            </div>
-            <div className="space-y-6">
-              <div className="rounded-2xl border border-border/50 p-5">
-                <p className="text-xs uppercase tracking-widest text-primary">2020 — 2023</p>
-                <p className="mt-1 font-semibold">Bachelor of Arts, Economics</p>
-                <p className="text-sm text-muted-foreground">University of Calicut</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Coursework: Econometrics, Statistics, Microeconomics, Research Methodology.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border/50 p-5">
-                <p className="text-xs uppercase tracking-widest text-primary">2024</p>
-                <p className="mt-1 font-semibold">Data Analytics Professional Program</p>
-                <p className="text-sm text-muted-foreground">Intensive training in Python, SQL, Power BI, Tableau and Statistics.</p>
-              </div>
-            </div>
-          </Card>
+          <div className="mb-8 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Achievements</p>
+            <h3 className="mt-2 font-display text-3xl font-bold md:text-4xl">Progress worth measuring</h3>
+          </div>
         </Reveal>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+          {STATS.map((s) => <StatItem key={s.label} stat={s} />)}
+        </div>
+      </div>
+
+      {/* Professional Development / Certification */}
+      <div className="mt-20">
+        <Reveal>
+          <div className="mb-8 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Professional Development</p>
+            <h3 className="mt-2 font-display text-3xl font-bold md:text-4xl">Certification</h3>
+          </div>
+        </Reveal>
+
         <Reveal delay={100}>
-          <Card className="glass h-full rounded-3xl border-primary/10 p-8">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-accent">
-                <Award className="h-5 w-5 text-accent-foreground" />
-              </div>
-              <h3 className="text-2xl font-semibold">Certifications</h3>
-            </div>
-            <ul className="grid gap-3">
-              {CERTS.map((c) => (
-                <li key={c} className="flex items-start gap-3 rounded-xl border border-border/50 p-4 transition-colors hover:border-primary/40">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary/15 text-primary">
-                    <Check className="h-3.5 w-3.5" />
+          <Card className="glass mx-auto max-w-4xl overflow-hidden rounded-3xl border-primary/10 p-0 shadow-card hover-lift">
+            <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+              <a
+                href={CERT_PDF_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="View HACA Certificate"
+                className="group relative block overflow-hidden bg-background/40 p-4"
+              >
+                <div className="relative overflow-hidden rounded-2xl ring-1 ring-primary/20">
+                  <img
+                    src={CERT_THUMB_URL}
+                    alt="HACA Advanced Data Analytics with AI — Certificate of Completion"
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                </div>
+              </a>
+
+              <div className="flex flex-col justify-center p-6 md:p-8">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-accent">
+                    <Award className="h-3 w-3" /> Verified
                   </span>
-                  <span className="text-sm">{c}</span>
-                </li>
-              ))}
-            </ul>
+                  <span className="text-xs text-muted-foreground">14 July 2026</span>
+                </div>
+                <h4 className="mt-3 text-xl font-semibold md:text-2xl">Advanced Data Analytics with AI</h4>
+                <p className="mt-1 text-sm font-medium text-primary">Haris &amp; Co. Academy (HACA)</p>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Industry-focused program covering SQL, Python, Power BI, Tableau, Excel, EDA, dashboarding
+                  and AI-assisted analytics.
+                </p>
+
+                <dl className="mt-4 grid grid-cols-2 gap-3 text-xs">
+                  <div className="rounded-xl border border-border/50 p-3">
+                    <dt className="uppercase tracking-widest text-muted-foreground">Certificate ID</dt>
+                    <dd className="mt-1 font-mono text-sm text-foreground">TS-26-DA091</dd>
+                  </div>
+                  <div className="rounded-xl border border-border/50 p-3">
+                    <dt className="uppercase tracking-widest text-muted-foreground">Issued by</dt>
+                    <dd className="mt-1 text-sm text-foreground">HACA Tech School</dd>
+                  </div>
+                </dl>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                    <a href={CERT_PDF_URL} target="_blank" rel="noreferrer">
+                      <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> View Certificate
+                    </a>
+                  </Button>
+                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground shadow-elegant">
+                    <a href={CERT_PDF_URL} download>
+                      <Download className="mr-1.5 h-3.5 w-3.5" /> Download
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </Card>
         </Reveal>
       </div>
@@ -901,33 +1022,80 @@ function Testimonials() {
 function Resume() {
   return (
     <Section id="resume">
-      <div className="glass relative overflow-hidden rounded-[2.5rem] p-10 md:p-16">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-        <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_auto]">
-          <div>
-            <Badge variant="outline" className="glass mb-4 border-primary/30 px-3 py-1 text-xs tracking-widest uppercase text-primary">
-              Resume
-            </Badge>
-            <h2 className="text-4xl font-bold md:text-5xl">Get the full story.</h2>
-            <p className="mt-4 max-w-xl text-muted-foreground">
-              Download a polished, recruiter-ready PDF with the full breakdown of my experience,
-              projects and certifications.
-            </p>
+      <SectionHeader
+        eyebrow="Resume"
+        title="The full picture on one page"
+        subtitle="Download my latest resume to explore my technical skills, internship experience and analytics projects."
+      />
+      <Reveal>
+        <Card className="glass relative overflow-hidden rounded-[2rem] border-primary/10 p-6 md:p-10">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+
+          <div className="relative grid items-center gap-8 md:grid-cols-[0.9fr_1.1fr]">
+            {/* Preview card */}
+            <div className="relative mx-auto w-full max-w-sm">
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-primary opacity-25 blur-2xl" />
+              <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-background/70 p-5 shadow-elegant ring-1 ring-primary/20">
+                <div className="flex items-center justify-between border-b border-border/60 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground">
+                      <FileText className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold">Sinan_UT_Resume.pdf</p>
+                      <p className="text-[11px] text-muted-foreground">Updated 2026 · 1 page</p>
+                    </div>
+                  </div>
+                  <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-primary">
+                    PDF
+                  </span>
+                </div>
+
+                <div className="mt-5 space-y-2.5">
+                  <div className="h-2 w-1/2 rounded-full bg-gradient-primary" />
+                  <div className="h-1.5 w-3/4 rounded-full bg-muted/70" />
+                  <div className="h-1.5 w-2/3 rounded-full bg-muted/60" />
+                  <div className="mt-4 h-1.5 w-1/3 rounded-full bg-accent/70" />
+                  <div className="h-1.5 w-5/6 rounded-full bg-muted/50" />
+                  <div className="h-1.5 w-4/6 rounded-full bg-muted/50" />
+                  <div className="h-1.5 w-3/6 rounded-full bg-muted/50" />
+                  <div className="mt-4 h-1.5 w-1/3 rounded-full bg-accent/70" />
+                  <div className="h-1.5 w-5/6 rounded-full bg-muted/50" />
+                  <div className="h-1.5 w-4/6 rounded-full bg-muted/50" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold md:text-3xl">Recruiter-ready in a single PDF</h3>
+              <p className="mt-3 text-muted-foreground">
+                A concise, one-page snapshot of my education, HACA internship, technical stack and featured
+                analytics projects — formatted for quick screening.
+              </p>
+              <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                {["Education & Training", "Internship at HACA", "Featured Projects", "Technical Skills"].map((k) => (
+                  <li key={k} className="flex items-start gap-2 text-sm text-foreground/85">
+                    <Check className="mt-0.5 h-4 w-4 flex-none text-primary" /> {k}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant">
+                  <a href="#" download><Download className="mr-2 h-4 w-4" /> Download Resume</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                  <a href="#" target="_blank" rel="noreferrer"><FileText className="mr-2 h-4 w-4" /> View Resume</a>
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col gap-3">
-            <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-              <a href="#"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
-              <a href="#"><FileText className="mr-2 h-4 w-4" /> Preview PDF</a>
-            </Button>
-          </div>
-        </div>
-      </div>
+        </Card>
+      </Reveal>
     </Section>
   );
 }
+
 
 /* ------------------------------ GitHub ------------------------------ */
 
@@ -1259,12 +1427,11 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Projects />
-        <Stats />
-        <Experience />
-        <EducationAndCerts />
+        <CareerJourney />
         <Services />
         <Testimonials />
         <Resume />
+
         <GitHubSection />
         <Contact />
       </main>
