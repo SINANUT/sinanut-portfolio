@@ -241,6 +241,54 @@ const STATS = [
   { label: "Industry Experience", value: 1, suffix: "", unit: "Internship" },
 ];
 
+const REPOS: { name: string; desc: string; tech: string[]; stars?: number; forks?: number }[] = [
+  { name: "amazon-prime-powerbi", desc: "Interactive Prime Video catalog dashboard with genre, rating and release-year drilldowns.", tech: ["Power BI", "DAX"], stars: 18, forks: 4 },
+  { name: "teen-wellbeing-dashboard", desc: "Power BI report linking social media usage to stress, sleep and GPA outcomes.", tech: ["Power BI", "Power Query"], stars: 24, forks: 6 },
+  { name: "python-salary-analysis", desc: "EDA on a multi-year salary dataset — distributions, remote pay gaps, role growth curves.", tech: ["Python", "Pandas", "Matplotlib"], stars: 15, forks: 3 },
+  { name: "books-eda", desc: "Cleaned and profiled a large book catalog to surface rating, pricing and genre patterns.", tech: ["Python", "Pandas"], stars: 11, forks: 2 },
+  { name: "sql-employee-insights", desc: "Advanced SQL analytics on HR data using CTEs and window functions.", tech: ["MySQL", "SQL"], stars: 20, forks: 5 },
+  { name: "retail-sales-analysis", desc: "Retail transactions study covering revenue, category mix and regional trends.", tech: ["Python", "SQL"], stars: 9, forks: 1 },
+  { name: "professor-gpt", desc: "Streamlit app that turns any topic into a structured lesson via the OpenAI API.", tech: ["Python", "Streamlit", "OpenAI"], stars: 27, forks: 8 },
+];
+
+const DASHBOARDS: { title: string; objective: string; kpis: string[]; tools: string[]; image: string }[] = [
+  {
+    title: "Teen Wellbeing Dashboard",
+    objective: "Reveal how social media platforms shape stress, sleep and academic performance for teens.",
+    kpis: ["Avg Stress Score", "Sleep Hours", "GPA Trend", "Platform Mix"],
+    tools: ["Power BI", "DAX", "Power Query"],
+    image: projTeen,
+  },
+  {
+    title: "Amazon Sales Dashboard",
+    objective: "Track revenue, category performance and regional trends for executive decision-making.",
+    kpis: ["Revenue", "Top Categories", "Region Split", "YoY Growth"],
+    tools: ["Power BI", "DAX", "Excel"],
+    image: projSales,
+  },
+  {
+    title: "HR Dashboard",
+    objective: "Monitor workforce health — headcount, attrition, tenure and compensation across departments.",
+    kpis: ["Headcount", "Attrition %", "Avg Tenure", "Salary Bands"],
+    tools: ["Power BI", "SQL"],
+    image: projSql,
+  },
+  {
+    title: "Netflix Dashboard",
+    objective: "Explore Netflix's catalog by genre, country, rating and release timeline for content strategy.",
+    kpis: ["Titles", "Genre Mix", "Country Share", "Release Trend"],
+    tools: ["Power BI", "Power Query"],
+    image: projBooks,
+  },
+];
+
+const WHY_CARDS = [
+  { icon: Brain, title: "Analytical Thinking", desc: "I enjoy transforming raw datasets into meaningful business insights." },
+  { icon: BarChart3, title: "Business Intelligence", desc: "Experienced in building interactive dashboards that support data-driven decision-making." },
+  { icon: Zap, title: "Problem Solving", desc: "I focus on understanding business problems before creating technical solutions." },
+  { icon: TrendingUp, title: "Continuous Learning", desc: "Committed to improving my skills through projects, real-world practice and emerging technologies." },
+];
+
 
 /* ------------------------------ Hooks ------------------------------ */
 
