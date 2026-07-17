@@ -1666,13 +1666,15 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Projects />
+        <DashboardGallery />
         <CareerJourney />
         <Services />
+        <WhyWorkWithMe />
         <Testimonials />
         <Resume />
-
         <GitHubSection />
         <Contact />
+        <CTASection />
       </main>
       <Footer />
       <BackToTop />
