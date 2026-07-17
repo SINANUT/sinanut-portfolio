@@ -1427,12 +1427,11 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Projects />
-        <Stats />
-        <Experience />
-        <EducationAndCerts />
+        <CareerJourney />
         <Services />
         <Testimonials />
         <Resume />
+
         <GitHubSection />
         <Contact />
       </main>
