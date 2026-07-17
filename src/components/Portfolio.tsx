@@ -38,6 +38,7 @@ const NAV = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "gallery", label: "Gallery" },
   { id: "journey", label: "Journey" },
   { id: "resume", label: "Resume" },
   { id: "contact", label: "Contact" },
@@ -238,6 +239,54 @@ const STATS = [
   { label: "Power BI Dashboards", value: 4, suffix: "+" },
   { label: "SQL & Python Projects", value: 6, suffix: "+" },
   { label: "Industry Experience", value: 1, suffix: "", unit: "Internship" },
+];
+
+const REPOS: { name: string; desc: string; tech: string[]; stars?: number; forks?: number }[] = [
+  { name: "amazon-prime-powerbi", desc: "Interactive Prime Video catalog dashboard with genre, rating and release-year drilldowns.", tech: ["Power BI", "DAX"], stars: 18, forks: 4 },
+  { name: "teen-wellbeing-dashboard", desc: "Power BI report linking social media usage to stress, sleep and GPA outcomes.", tech: ["Power BI", "Power Query"], stars: 24, forks: 6 },
+  { name: "python-salary-analysis", desc: "EDA on a multi-year salary dataset — distributions, remote pay gaps, role growth curves.", tech: ["Python", "Pandas", "Matplotlib"], stars: 15, forks: 3 },
+  { name: "books-eda", desc: "Cleaned and profiled a large book catalog to surface rating, pricing and genre patterns.", tech: ["Python", "Pandas"], stars: 11, forks: 2 },
+  { name: "sql-employee-insights", desc: "Advanced SQL analytics on HR data using CTEs and window functions.", tech: ["MySQL", "SQL"], stars: 20, forks: 5 },
+  { name: "retail-sales-analysis", desc: "Retail transactions study covering revenue, category mix and regional trends.", tech: ["Python", "SQL"], stars: 9, forks: 1 },
+  { name: "professor-gpt", desc: "Streamlit app that turns any topic into a structured lesson via the OpenAI API.", tech: ["Python", "Streamlit", "OpenAI"], stars: 27, forks: 8 },
+];
+
+const DASHBOARDS: { title: string; objective: string; kpis: string[]; tools: string[]; image: string }[] = [
+  {
+    title: "Teen Wellbeing Dashboard",
+    objective: "Reveal how social media platforms shape stress, sleep and academic performance for teens.",
+    kpis: ["Avg Stress Score", "Sleep Hours", "GPA Trend", "Platform Mix"],
+    tools: ["Power BI", "DAX", "Power Query"],
+    image: projTeen,
+  },
+  {
+    title: "Amazon Sales Dashboard",
+    objective: "Track revenue, category performance and regional trends for executive decision-making.",
+    kpis: ["Revenue", "Top Categories", "Region Split", "YoY Growth"],
+    tools: ["Power BI", "DAX", "Excel"],
+    image: projSales,
+  },
+  {
+    title: "HR Dashboard",
+    objective: "Monitor workforce health — headcount, attrition, tenure and compensation across departments.",
+    kpis: ["Headcount", "Attrition %", "Avg Tenure", "Salary Bands"],
+    tools: ["Power BI", "SQL"],
+    image: projSql,
+  },
+  {
+    title: "Netflix Dashboard",
+    objective: "Explore Netflix's catalog by genre, country, rating and release timeline for content strategy.",
+    kpis: ["Titles", "Genre Mix", "Country Share", "Release Trend"],
+    tools: ["Power BI", "Power Query"],
+    image: projBooks,
+  },
+];
+
+const WHY_CARDS = [
+  { icon: Brain, title: "Analytical Thinking", desc: "I enjoy transforming raw datasets into meaningful business insights." },
+  { icon: BarChart3, title: "Business Intelligence", desc: "Experienced in building interactive dashboards that support data-driven decision-making." },
+  { icon: Zap, title: "Problem Solving", desc: "I focus on understanding business problems before creating technical solutions." },
+  { icon: TrendingUp, title: "Continuous Learning", desc: "Committed to improving my skills through projects, real-world practice and emerging technologies." },
 ];
 
 
@@ -1097,70 +1146,258 @@ function Resume() {
 }
 
 
-/* ------------------------------ GitHub ------------------------------ */
+/* ------------------------------ GitHub Showcase ------------------------------ */
 
 function GitHubSection() {
+  const initials = "MS";
   return (
     <Section id="github">
-      <SectionHeader eyebrow="GitHub" title="Building in the open" />
-      <Card className="glass rounded-3xl border-primary/10 p-8 md:p-10">
-        <div className="grid gap-8 lg:grid-cols-[1fr_2fr]">
-          <div>
-            <div className="flex items-center gap-4">
-              <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-primary shadow-glow">
-                <Github className="h-7 w-7 text-primary-foreground" />
-              </div>
-              <div>
-                <p className="font-semibold text-lg">@SINANUT</p>
-                <p className="text-sm text-muted-foreground">Data Analyst · {LOCATION}</p>
-              </div>
+      <SectionHeader
+        eyebrow="GitHub"
+        title="GitHub Showcase"
+        subtitle="A curated look at the repositories where I ship analytics work in the open."
+      />
 
-            </div>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              {[
-                { k: "Repos", v: "28" },
-                { k: "Stars", v: "142" },
-                { k: "Streak", v: "47d" },
-              ].map((s) => (
-                <div key={s.k} className="rounded-2xl border border-border/50 p-3 text-center">
-                  <p className="font-display text-xl font-bold text-gradient">{s.v}</p>
-                  <p className="text-[11px] uppercase tracking-widest text-muted-foreground">{s.k}</p>
-                </div>
-              ))}
-            </div>
-            <Button asChild className="mt-6 w-full bg-gradient-primary text-primary-foreground">
-              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> View Profile</a>
-            </Button>
+      {/* Profile card */}
+      <Reveal>
+        <Card className="glass relative overflow-hidden rounded-3xl border-primary/10 p-8 shadow-card md:p-10">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
-          </div>
-          <div>
-            <p className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">Contribution activity</p>
-            <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-1">
-              {Array.from({ length: 26 * 7 }).map((_, i) => {
-                const intensity = Math.floor(Math.random() * 5);
-                const bg = ["bg-muted/60", "bg-primary/20", "bg-primary/40", "bg-primary/70", "bg-primary"][intensity];
-                return <span key={i} className={cn("aspect-square rounded-[3px]", bg)} />;
-              })}
+          <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
+            <div className="relative">
+              <div className="absolute -inset-2 rounded-full bg-gradient-primary opacity-40 blur-lg" />
+              <div className="relative grid h-24 w-24 place-items-center rounded-full bg-gradient-primary text-3xl font-bold text-primary-foreground shadow-elegant ring-2 ring-primary/40">
+                {initials}
+              </div>
             </div>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {[
-                { n: "sales-dashboard-powerbi", d: "Executive sales dashboard with DAX measures." },
-                { n: "python-salary-analysis", d: "Cross-industry salary study using Pandas." },
-                { n: "sql-employee-insights", d: "Advanced SQL analytics on HR data." },
-                { n: "prime-video-tableau", d: "Prime Video catalog exploration in Tableau." },
-              ].map((r) => (
-                <div key={r.n} className="rounded-xl border border-border/50 p-4 transition-colors hover:border-primary/40">
-                  <p className="font-mono text-sm text-primary">{r.n}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{r.d}</p>
-                </div>
-              ))}
+
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-2xl font-bold md:text-3xl">Muhammed Sinan U T</h3>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> Active
+                </span>
+              </div>
+              <p className="mt-1 font-mono text-sm text-primary">@SINANUT</p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                Passionate about building practical analytics solutions through SQL, Python, Power BI and Business Intelligence.
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-primary" /> {LOCATION}</span>
+                <span className="inline-flex items-center gap-1.5"><Github className="h-3.5 w-3.5" /> github.com/SINANUT</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+                <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> View Profile</a>
+              </Button>
+              <div className="grid grid-cols-3 gap-2">
+                {[{ k: "Repos", v: "20+" }, { k: "Stars", v: "120+" }, { k: "Streak", v: "45d" }].map((s) => (
+                  <div key={s.k} className="rounded-xl border border-border/50 bg-background/40 px-2 py-2 text-center">
+                    <p className="font-display text-sm font-bold text-gradient">{s.v}</p>
+                    <p className="text-[9px] uppercase tracking-widest text-muted-foreground">{s.k}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </Reveal>
+
+      {/* Repositories */}
+      <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {REPOS.map((r, i) => (
+          <Reveal key={r.name} delay={i * 50}>
+            <Card className="glass group flex h-full flex-col rounded-2xl border-primary/10 p-6 shadow-card transition-all hover-lift">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <Github className="h-4 w-4 text-primary" />
+                  <p className="font-mono text-sm font-semibold text-foreground/90 group-hover:text-primary transition-colors">{r.name}</p>
+                </div>
+                <span className="rounded-full border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-primary">Public</span>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {r.tech.map((t) => (
+                  <span key={t} className="rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-foreground/90">{t}</span>
+                ))}
+              </div>
+              <div className="mt-auto flex items-center justify-between pt-5">
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1"><Star className="h-3.5 w-3.5 text-accent" /> {r.stars ?? 0}</span>
+                  <span className="inline-flex items-center gap-1"><Layers className="h-3.5 w-3.5" /> {r.forks ?? 0}</span>
+                </div>
+                <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                  <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+                    <Github className="mr-1.5 h-3.5 w-3.5" /> View
+                  </a>
+                </Button>
+              </div>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* Contribution graph */}
+      <Reveal delay={100}>
+        <Card className="glass mt-10 rounded-3xl border-primary/10 p-6 md:p-8">
+          <div className="mb-4 flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Contribution activity</p>
+            <p className="text-xs text-muted-foreground">Last 26 weeks</p>
+          </div>
+          <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-1">
+            {Array.from({ length: 26 * 7 }).map((_, i) => {
+              const intensity = Math.floor(Math.random() * 5);
+              const bg = ["bg-muted/60", "bg-primary/20", "bg-primary/40", "bg-primary/70", "bg-primary"][intensity];
+              return <span key={i} className={cn("aspect-square rounded-[3px] transition-transform hover:scale-125", bg)} />;
+            })}
+          </div>
+          <div className="mt-4 flex items-center justify-end gap-2 text-[10px] uppercase tracking-widest text-muted-foreground">
+            Less
+            {["bg-muted/60", "bg-primary/20", "bg-primary/40", "bg-primary/70", "bg-primary"].map((c, i) => (
+              <span key={i} className={cn("h-3 w-3 rounded-[3px]", c)} />
+            ))}
+            More
+          </div>
+        </Card>
+      </Reveal>
     </Section>
   );
 }
+
+/* ------------------------------ Dashboard Gallery ------------------------------ */
+
+function DashboardGallery() {
+  return (
+    <Section id="gallery">
+      <SectionHeader
+        eyebrow="Dashboard Gallery"
+        title="Dashboard Gallery"
+        subtitle="Interactive Business Intelligence Dashboards"
+      />
+      <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
+        {DASHBOARDS.map((d, i) => (
+          <Reveal key={d.title} delay={i * 80}>
+            <Card className="glass group flex h-full flex-col overflow-hidden rounded-3xl border-primary/10 p-0 shadow-card transition-all hover-lift">
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img
+                  src={d.image}
+                  alt={`${d.title} preview`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <Badge className="absolute right-4 top-4 border-none bg-gradient-accent text-accent-foreground shadow-glow">
+                  <BarChart3 className="mr-1 h-3 w-3" /> Power BI
+                </Badge>
+              </div>
+              <div className="flex flex-1 flex-col p-7 md:p-8">
+                <h3 className="text-2xl font-semibold tracking-tight">{d.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d.objective}</p>
+
+                <div className="mt-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary/80">Key KPIs</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {d.kpis.map((k) => (
+                      <span key={k} className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-foreground/90">{k}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">Tools Used</p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {d.tools.map((t) => (
+                      <span key={t} className="rounded-md border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] font-medium text-accent">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------ Why Work With Me ------------------------------ */
+
+function WhyWorkWithMe() {
+  return (
+    <Section id="why">
+      <SectionHeader eyebrow="Why Me" title="Why Work With Me" />
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {WHY_CARDS.map((w, i) => (
+          <Reveal key={w.title} delay={i * 70}>
+            <Card className="glass group h-full rounded-3xl border-primary/10 p-7 shadow-card transition-all hover-lift">
+              <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-primary shadow-glow transition-transform group-hover:scale-110 group-hover:rotate-6">
+                <w.icon className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <h3 className="font-display text-lg font-semibold">{w.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.desc}</p>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ------------------------------ CTA ------------------------------ */
+
+function CTASection() {
+  return (
+    <section className="relative py-24 md:py-32">
+      <div className="mx-auto w-full max-w-6xl px-6">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/20 p-10 shadow-elegant md:p-16">
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-10 animate-shimmer"
+              style={{
+                background:
+                  "linear-gradient(120deg, oklch(0.35 0.15 262 / 0.6), oklch(0.5 0.18 258 / 0.5), oklch(0.78 0.16 75 / 0.35), oklch(0.35 0.15 262 / 0.6))",
+                backgroundSize: "300% 100%",
+              }}
+            />
+            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary/30 blur-3xl animate-glow-pulse" />
+            <div className="pointer-events-none absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-accent/20 blur-3xl animate-glow-pulse" />
+
+            <div className="relative text-center">
+              <Badge variant="outline" className="glass mb-5 border-primary/30 px-3 py-1 text-xs uppercase tracking-widest text-primary">
+                <Sparkles className="mr-1.5 h-3 w-3" /> Let's Collaborate
+              </Badge>
+              <h2 className="mx-auto max-w-3xl text-balance text-4xl font-bold md:text-5xl lg:text-6xl">
+                Let's Build Something <span className="text-gradient">Data-Driven</span> Together
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">
+                Whether you have an opportunity, collaboration, or simply want to discuss analytics, I'm always happy to connect.
+              </p>
+              <div className="mt-9 flex flex-wrap justify-center gap-3">
+                <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+                  <a href="#resume"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                  <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> GitHub</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                  <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-4 w-4" /> LinkedIn</a>
+                </Button>
+                <Button asChild size="lg" variant="ghost">
+                  <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Contact Me</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 
 /* ------------------------------ Contact ------------------------------ */
 
@@ -1170,15 +1407,17 @@ function Contact() {
     <Section id="contact">
       <SectionHeader
         eyebrow="Contact"
-        title="Let's build something meaningful"
-        subtitle="Have a project, a role, or a dataset you can't crack? Drop a message — I reply within 24 hours."
+        title="Let's Connect"
+        subtitle="I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. If you're looking for someone passionate about turning data into actionable insights, I'd love to connect."
       />
       <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <div className="flex h-full flex-col gap-4">
             {[
               { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+              { icon: Phone, label: "Phone", value: "+91 · Available on request", href: `mailto:${EMAIL}` },
               { icon: Linkedin, label: "LinkedIn", value: "muhammed-sinan-ut", href: LINKEDIN_URL },
+              { icon: Github, label: "GitHub", value: "SINANUT", href: GITHUB_URL },
               { icon: MapPin, label: "Location", value: `${LOCATION} · Open to Remote`, href: undefined as string | undefined },
             ].map((c) => {
               const Inner = (
@@ -1239,22 +1478,16 @@ function Contact() {
                   <Input required type="email" placeholder="jane@company.com" className="glass h-11 border-primary/20" />
                 </div>
               </div>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Phone</label>
-                  <Input placeholder="+1 555 000 0000" className="glass h-11 border-primary/20" />
-                </div>
-                <div>
-                  <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
-                  <Input placeholder="Project inquiry" className="glass h-11 border-primary/20" />
-                </div>
+              <div>
+                <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
+                <Input required placeholder="Project inquiry, role opportunity, collaboration…" className="glass h-11 border-primary/20" />
               </div>
               <div>
                 <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Message</label>
-                <Textarea required rows={5} placeholder="Tell me about the problem you're trying to solve…" className="glass border-primary/20" />
+                <Textarea required rows={6} placeholder="Tell me about the problem you're trying to solve…" className="glass border-primary/20" />
               </div>
-              <Button type="submit" size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-                {sent ? <><Check className="mr-2 h-4 w-4" /> Message sent</> : <><Send className="mr-2 h-4 w-4" /> Send Message</>}
+              <Button type="submit" size="lg" className="h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant hover:opacity-90">
+                {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5" /> Send Message</>}
               </Button>
             </form>
           </Card>
@@ -1267,50 +1500,56 @@ function Contact() {
 /* ------------------------------ Footer ------------------------------ */
 
 function Footer() {
+  const quickLinks = NAV.filter((n) => ["about", "projects", "gallery", "journey", "resume", "contact"].includes(n.id));
   return (
-    <footer className="relative border-t border-border/40 py-12">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 md:grid-cols-3">
-        <div>
-          <a href="#home" className="flex items-center gap-2 font-display text-lg font-bold">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-primary text-primary-foreground">MS</span>
-            Sinan<span className="text-gradient">.</span>
+    <footer className="relative border-t border-border/40">
+      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-14 md:flex-row md:items-start md:justify-between">
+        <div className="max-w-sm">
+          <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow">MS</span>
+            <span>Muhammed Sinan U T<span className="text-gradient">.</span></span>
           </a>
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Data Analyst crafting dashboards, insights and BI solutions that actually get used.
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Data Analyst · BI Analyst · Power BI Developer — turning data into decisions.
           </p>
         </div>
-        <div>
-          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Quick Links</p>
-          <ul className="grid grid-cols-2 gap-2 text-sm">
-            {NAV.map((n) => (
+
+        <div className="flex flex-col gap-3">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Quick Links</p>
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-3">
+            {quickLinks.map((n) => (
               <li key={n.id}>
                 <a href={`#${n.id}`} className="text-muted-foreground transition-colors hover:text-foreground">{n.label}</a>
               </li>
             ))}
           </ul>
         </div>
-        <div>
-          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Follow</p>
-          <div className="flex gap-3">
+
+        <div className="flex flex-col gap-3">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Follow</p>
+          <div className="flex gap-2.5">
             {[
               { Icon: Github, href: GITHUB_URL, label: "GitHub" },
               { Icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
               { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
             ].map(({ Icon, href, label }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground">
+              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl border border-border/60 bg-muted/40 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-gradient-primary hover:text-primary-foreground">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
           </div>
-
-          <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
-            <Users className="h-3 w-3" /> Currently open to opportunities
-          </p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground"
+          >
+            <ArrowUp className="h-3.5 w-3.5" /> Back to top
+          </button>
         </div>
       </div>
-      <div className="mx-auto mt-10 flex w-full max-w-7xl flex-col items-center justify-between gap-3 border-t border-border/40 px-6 pt-6 text-xs text-muted-foreground md:flex-row">
-        <p>© {new Date().getFullYear()} Muhammed Sinan U T. Crafted with precision.</p>
-        <p>Built with React, TanStack & Tailwind.</p>
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground md:flex-row">
+        <p>© {new Date().getFullYear()} Muhammed Sinan U T · All rights reserved.</p>
+        <p>Designed & built with care in Kerala, India.</p>
       </div>
     </footer>
   );
@@ -1427,13 +1666,15 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Projects />
+        <DashboardGallery />
         <CareerJourney />
         <Services />
+        <WhyWorkWithMe />
         <Testimonials />
         <Resume />
-
         <GitHubSection />
         <Contact />
+        <CTASection />
       </main>
       <Footer />
       <BackToTop />
