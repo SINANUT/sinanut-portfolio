@@ -1407,15 +1407,17 @@ function Contact() {
     <Section id="contact">
       <SectionHeader
         eyebrow="Contact"
-        title="Let's build something meaningful"
-        subtitle="Have a project, a role, or a dataset you can't crack? Drop a message — I reply within 24 hours."
+        title="Let's Connect"
+        subtitle="I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. If you're looking for someone passionate about turning data into actionable insights, I'd love to connect."
       />
       <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <div className="flex h-full flex-col gap-4">
             {[
               { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+              { icon: Phone, label: "Phone", value: "+91 · Available on request", href: `mailto:${EMAIL}` },
               { icon: Linkedin, label: "LinkedIn", value: "muhammed-sinan-ut", href: LINKEDIN_URL },
+              { icon: Github, label: "GitHub", value: "SINANUT", href: GITHUB_URL },
               { icon: MapPin, label: "Location", value: `${LOCATION} · Open to Remote`, href: undefined as string | undefined },
             ].map((c) => {
               const Inner = (
