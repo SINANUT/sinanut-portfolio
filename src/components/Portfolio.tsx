@@ -1478,22 +1478,16 @@ function Contact() {
                   <Input required type="email" placeholder="jane@company.com" className="glass h-11 border-primary/20" />
                 </div>
               </div>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Phone</label>
-                  <Input placeholder="+1 555 000 0000" className="glass h-11 border-primary/20" />
-                </div>
-                <div>
-                  <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
-                  <Input placeholder="Project inquiry" className="glass h-11 border-primary/20" />
-                </div>
+              <div>
+                <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
+                <Input required placeholder="Project inquiry, role opportunity, collaboration…" className="glass h-11 border-primary/20" />
               </div>
               <div>
                 <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Message</label>
-                <Textarea required rows={5} placeholder="Tell me about the problem you're trying to solve…" className="glass border-primary/20" />
+                <Textarea required rows={6} placeholder="Tell me about the problem you're trying to solve…" className="glass border-primary/20" />
               </div>
-              <Button type="submit" size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-                {sent ? <><Check className="mr-2 h-4 w-4" /> Message sent</> : <><Send className="mr-2 h-4 w-4" /> Send Message</>}
+              <Button type="submit" size="lg" className="h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant hover:opacity-90">
+                {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5" /> Send Message</>}
               </Button>
             </form>
           </Card>
