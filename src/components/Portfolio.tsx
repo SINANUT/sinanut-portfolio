@@ -1500,50 +1500,56 @@ function Contact() {
 /* ------------------------------ Footer ------------------------------ */
 
 function Footer() {
+  const quickLinks = NAV.filter((n) => ["about", "projects", "gallery", "journey", "resume", "contact"].includes(n.id));
   return (
-    <footer className="relative border-t border-border/40 py-12">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 md:grid-cols-3">
-        <div>
-          <a href="#home" className="flex items-center gap-2 font-display text-lg font-bold">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-primary text-primary-foreground">MS</span>
-            Sinan<span className="text-gradient">.</span>
+    <footer className="relative border-t border-border/40">
+      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-14 md:flex-row md:items-start md:justify-between">
+        <div className="max-w-sm">
+          <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow">MS</span>
+            <span>Muhammed Sinan U T<span className="text-gradient">.</span></span>
           </a>
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Data Analyst crafting dashboards, insights and BI solutions that actually get used.
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Data Analyst · BI Analyst · Power BI Developer — turning data into decisions.
           </p>
         </div>
-        <div>
-          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Quick Links</p>
-          <ul className="grid grid-cols-2 gap-2 text-sm">
-            {NAV.map((n) => (
+
+        <div className="flex flex-col gap-3">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Quick Links</p>
+          <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-3">
+            {quickLinks.map((n) => (
               <li key={n.id}>
                 <a href={`#${n.id}`} className="text-muted-foreground transition-colors hover:text-foreground">{n.label}</a>
               </li>
             ))}
           </ul>
         </div>
-        <div>
-          <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Follow</p>
-          <div className="flex gap-3">
+
+        <div className="flex flex-col gap-3">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Follow</p>
+          <div className="flex gap-2.5">
             {[
               { Icon: Github, href: GITHUB_URL, label: "GitHub" },
               { Icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
               { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
             ].map(({ Icon, href, label }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:bg-gradient-primary hover:text-primary-foreground">
+              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl border border-border/60 bg-muted/40 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-gradient-primary hover:text-primary-foreground">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
           </div>
-
-          <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
-            <Users className="h-3 w-3" /> Currently open to opportunities
-          </p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground"
+          >
+            <ArrowUp className="h-3.5 w-3.5" /> Back to top
+          </button>
         </div>
       </div>
-      <div className="mx-auto mt-10 flex w-full max-w-7xl flex-col items-center justify-between gap-3 border-t border-border/40 px-6 pt-6 text-xs text-muted-foreground md:flex-row">
-        <p>© {new Date().getFullYear()} Muhammed Sinan U T. Crafted with precision.</p>
-        <p>Built with React, TanStack & Tailwind.</p>
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground md:flex-row">
+        <p>© {new Date().getFullYear()} Muhammed Sinan U T · All rights reserved.</p>
+        <p>Designed & built with care in Kerala, India.</p>
       </div>
     </footer>
   );
