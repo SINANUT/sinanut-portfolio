@@ -236,11 +236,43 @@ const TESTIMONIALS = [
   { name: "Priya Menon", role: "Ops Lead, GreenCart", quote: "Delivered ahead of schedule, documented everything and made the handover effortless. Would hire again in a heartbeat." },
 ];
 
-const STATS = [
-  { label: "Projects Completed", value: 6, suffix: "+" },
-  { label: "Power BI Dashboards", value: 4, suffix: "+" },
-  { label: "SQL & Python Projects", value: 6, suffix: "+" },
-  { label: "Industry Experience", value: 1, suffix: "", unit: "Internship" },
+const STATS: {
+  label: string;
+  value: number;
+  suffix: string;
+  unit?: string;
+  icon: LucideIcon;
+  desc: string;
+}[] = [
+  {
+    label: "Analytics Projects",
+    value: 8,
+    suffix: "+",
+    icon: BarChart3,
+    desc: "End-to-end analytics work spanning data cleaning, EDA, dashboard development, SQL querying and business insight generation.",
+  },
+  {
+    label: "Power BI Dashboards",
+    value: 4,
+    suffix: "+",
+    icon: Layers,
+    desc: "Interactive dashboards with KPIs, filters and visuals for HR, Sales, Entertainment and Student Wellbeing datasets.",
+  },
+  {
+    label: "SQL & Python Projects",
+    value: 4,
+    suffix: "+",
+    icon: Database,
+    desc: "Practical projects using SQL, Python, Pandas, NumPy and visualization techniques to solve real business problems.",
+  },
+  {
+    label: "Industry Internship",
+    value: 1,
+    suffix: "",
+    unit: "Internship",
+    icon: Briefcase,
+    desc: "Data Analyst Internship at Haris & Co. Academy (HACA) — hands-on work with real datasets, reporting and dashboards.",
+  },
 ];
 
 const REPOS: { name: string; desc: string; tech: string[]; stars?: number; forks?: number }[] = [
