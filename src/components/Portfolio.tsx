@@ -4,6 +4,7 @@ import {
   Database, Download, ExternalLink, FileText, Github, GraduationCap, Layers,
   Linkedin, Mail, MapPin, Menu, Moon, Phone, Quote, Send, Sparkles, Star, Sun,
   Terminal, TrendingUp, Users, X, Zap,
+  type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
