@@ -30,7 +30,9 @@ const CERT_THUMB_URL = certThumbAsset.url;
 
 const GITHUB_URL = "https://github.com/SINANUT";
 const LINKEDIN_URL = "https://www.linkedin.com/in/muhammed-sinan-ut/";
-const EMAIL = "sinanut1999@gmail.com";
+const EMAIL = "muhammedsinan.ullattil@gmail.com";
+const PHONE_DISPLAY = "+91 85907 26362";
+const PHONE_TEL = "+918590726362";
 const LOCATION = "Malappuram, Kerala, India";
 
 const NAV = [
@@ -1408,14 +1410,14 @@ function Contact() {
       <SectionHeader
         eyebrow="Contact"
         title="Let's Connect"
-        subtitle="I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. If you're looking for someone passionate about turning data into actionable insights, I'd love to connect."
+        subtitle="Thank you for visiting my portfolio. I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. Whether you have a job opportunity, collaboration, or simply want to connect, I'd be happy to hear from you."
       />
       <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <div className="flex h-full flex-col gap-4">
             {[
               { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-              { icon: Phone, label: "Phone", value: "+91 · Available on request", href: `mailto:${EMAIL}` },
+              { icon: Phone, label: "Phone", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
               { icon: Linkedin, label: "LinkedIn", value: "muhammed-sinan-ut", href: LINKEDIN_URL },
               { icon: Github, label: "GitHub", value: "SINANUT", href: GITHUB_URL },
               { icon: MapPin, label: "Location", value: `${LOCATION} · Open to Remote`, href: undefined as string | undefined },
@@ -1444,6 +1446,7 @@ function Contact() {
                 { icon: Github, href: GITHUB_URL, label: "GitHub" },
                 { icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
                 { icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+                { icon: Phone, href: `tel:${PHONE_TEL}`, label: "Phone" },
                 { icon: FileText, href: "#resume", label: "Resume" },
               ].map((s) => (
                 <a
@@ -1471,23 +1474,23 @@ function Contact() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Name</label>
-                  <Input required placeholder="Jane Doe" className="glass h-11 border-primary/20" />
+                  <Input required placeholder="Your full name" className="glass h-11 border-primary/20" />
                 </div>
                 <div>
                   <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Email</label>
-                  <Input required type="email" placeholder="jane@company.com" className="glass h-11 border-primary/20" />
+                  <Input required type="email" placeholder="you@company.com" className="glass h-11 border-primary/20" />
                 </div>
               </div>
               <div>
                 <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
-                <Input required placeholder="Project inquiry, role opportunity, collaboration…" className="glass h-11 border-primary/20" />
+                <Input required placeholder="Role opportunity, project inquiry, collaboration…" className="glass h-11 border-primary/20" />
               </div>
               <div>
                 <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Message</label>
-                <Textarea required rows={6} placeholder="Tell me about the problem you're trying to solve…" className="glass border-primary/20" />
+                <Textarea required rows={6} placeholder="Tell me a bit about the role or project you have in mind…" className="glass border-primary/20" />
               </div>
-              <Button type="submit" size="lg" className="h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant hover:opacity-90">
-                {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5" /> Send Message</>}
+              <Button type="submit" size="lg" className="group h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 hover:shadow-glow">
+                {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" /> Send Message</>}
               </Button>
             </form>
           </Card>
@@ -1504,15 +1507,23 @@ function Footer() {
   return (
     <footer className="relative border-t border-border/40">
       <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-14 md:flex-row md:items-start md:justify-between">
+
+      <div className="mx-auto w-full max-w-7xl px-6 pt-14 pb-6 text-center">
+        <p className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+          Turning Data into <span className="text-gradient">Decisions.</span>
+        </p>
+      </div>
+
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 pb-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
           <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold">
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow">MS</span>
             <span>Muhammed Sinan U T<span className="text-gradient">.</span></span>
           </a>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Data Analyst · BI Analyst · Power BI Developer — turning data into decisions.
+            Data Analyst · BI Analyst · Power BI Developer
           </p>
+          <p className="mt-1 text-sm text-muted-foreground">{LOCATION}</p>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -1547,9 +1558,9 @@ function Footer() {
           </button>
         </div>
       </div>
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground md:flex-row">
-        <p>© {new Date().getFullYear()} Muhammed Sinan U T · All rights reserved.</p>
-        <p>Designed & built with care in Kerala, India.</p>
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-1.5 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground/80 md:flex-row">
+        <p>© 2026 Muhammed Sinan U T. All Rights Reserved.</p>
+        <p className="text-[11px] tracking-wide text-muted-foreground/60">Designed & Developed by Muhammed Sinan U T</p>
       </div>
     </footer>
   );
