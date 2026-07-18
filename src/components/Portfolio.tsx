@@ -1410,14 +1410,14 @@ function Contact() {
       <SectionHeader
         eyebrow="Contact"
         title="Let's Connect"
-        subtitle="I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. If you're looking for someone passionate about turning data into actionable insights, I'd love to connect."
+        subtitle="Thank you for visiting my portfolio. I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. Whether you have a job opportunity, collaboration, or simply want to connect, I'd be happy to hear from you."
       />
       <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <div className="flex h-full flex-col gap-4">
             {[
               { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
-              { icon: Phone, label: "Phone", value: "+91 · Available on request", href: `mailto:${EMAIL}` },
+              { icon: Phone, label: "Phone", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
               { icon: Linkedin, label: "LinkedIn", value: "muhammed-sinan-ut", href: LINKEDIN_URL },
               { icon: Github, label: "GitHub", value: "SINANUT", href: GITHUB_URL },
               { icon: MapPin, label: "Location", value: `${LOCATION} · Open to Remote`, href: undefined as string | undefined },
@@ -1446,6 +1446,7 @@ function Contact() {
                 { icon: Github, href: GITHUB_URL, label: "GitHub" },
                 { icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
                 { icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+                { icon: Phone, href: `tel:${PHONE_TEL}`, label: "Phone" },
                 { icon: FileText, href: "#resume", label: "Resume" },
               ].map((s) => (
                 <a
@@ -1473,23 +1474,23 @@ function Contact() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Name</label>
-                  <Input required placeholder="Jane Doe" className="glass h-11 border-primary/20" />
+                  <Input required placeholder="Your full name" className="glass h-11 border-primary/20" />
                 </div>
                 <div>
                   <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Email</label>
-                  <Input required type="email" placeholder="jane@company.com" className="glass h-11 border-primary/20" />
+                  <Input required type="email" placeholder="you@company.com" className="glass h-11 border-primary/20" />
                 </div>
               </div>
               <div>
                 <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
-                <Input required placeholder="Project inquiry, role opportunity, collaboration…" className="glass h-11 border-primary/20" />
+                <Input required placeholder="Role opportunity, project inquiry, collaboration…" className="glass h-11 border-primary/20" />
               </div>
               <div>
                 <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Message</label>
-                <Textarea required rows={6} placeholder="Tell me about the problem you're trying to solve…" className="glass border-primary/20" />
+                <Textarea required rows={6} placeholder="Tell me a bit about the role or project you have in mind…" className="glass border-primary/20" />
               </div>
-              <Button type="submit" size="lg" className="h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant hover:opacity-90">
-                {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5" /> Send Message</>}
+              <Button type="submit" size="lg" className="group h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 hover:shadow-glow">
+                {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" /> Send Message</>}
               </Button>
             </form>
           </Card>
