@@ -30,7 +30,9 @@ const CERT_THUMB_URL = certThumbAsset.url;
 
 const GITHUB_URL = "https://github.com/SINANUT";
 const LINKEDIN_URL = "https://www.linkedin.com/in/muhammed-sinan-ut/";
-const EMAIL = "sinanut1999@gmail.com";
+const EMAIL = "muhammedsinan.ullattil@gmail.com";
+const PHONE_DISPLAY = "+91 85907 26362";
+const PHONE_TEL = "+918590726362";
 const LOCATION = "Malappuram, Kerala, India";
 
 const NAV = [
