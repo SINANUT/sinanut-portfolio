@@ -4,6 +4,7 @@ import {
   Database, Download, ExternalLink, FileText, Github, GraduationCap, Layers,
   Linkedin, Mail, MapPin, Menu, Moon, Phone, Quote, Send, Sparkles, Star, Sun,
   Terminal, TrendingUp, Users, X, Zap,
+  type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -236,11 +237,43 @@ const TESTIMONIALS = [
   { name: "Priya Menon", role: "Ops Lead, GreenCart", quote: "Delivered ahead of schedule, documented everything and made the handover effortless. Would hire again in a heartbeat." },
 ];
 
-const STATS = [
-  { label: "Projects Completed", value: 6, suffix: "+" },
-  { label: "Power BI Dashboards", value: 4, suffix: "+" },
-  { label: "SQL & Python Projects", value: 6, suffix: "+" },
-  { label: "Industry Experience", value: 1, suffix: "", unit: "Internship" },
+const STATS: {
+  label: string;
+  value: number;
+  suffix: string;
+  unit?: string;
+  icon: LucideIcon;
+  desc: string;
+}[] = [
+  {
+    label: "Analytics Projects",
+    value: 8,
+    suffix: "+",
+    icon: BarChart3,
+    desc: "End-to-end analytics work spanning data cleaning, EDA, dashboard development, SQL querying and business insight generation.",
+  },
+  {
+    label: "Power BI Dashboards",
+    value: 4,
+    suffix: "+",
+    icon: Layers,
+    desc: "Interactive dashboards with KPIs, filters and visuals for HR, Sales, Entertainment and Student Wellbeing datasets.",
+  },
+  {
+    label: "SQL & Python Projects",
+    value: 4,
+    suffix: "+",
+    icon: Database,
+    desc: "Practical projects using SQL, Python, Pandas, NumPy and visualization techniques to solve real business problems.",
+  },
+  {
+    label: "Industry Internship",
+    value: 1,
+    suffix: "",
+    unit: "Internship",
+    icon: Briefcase,
+    desc: "Data Analyst Internship at Haris & Co. Academy (HACA) — hands-on work with real datasets, reporting and dashboards.",
+  },
 ];
 
 const REPOS: { name: string; desc: string; tech: string[]; stars?: number; forks?: number }[] = [
@@ -895,13 +928,21 @@ function JourneyItem({ step, index }: { step: (typeof JOURNEY)[number]; index: n
 function StatItem({ stat }: { stat: (typeof STATS)[number] }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.4);
   const value = useCounter(stat.value, inView);
+  const Icon = stat.icon;
   return (
-    <div ref={ref} className="glass rounded-3xl p-6 text-center hover-lift md:p-8">
+    <div
+      ref={ref}
+      className="glass group relative flex h-full flex-col rounded-3xl p-6 text-center transition-all duration-500 hover-lift hover:border-primary/40 md:p-8"
+    >
+      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/15">
+        <Icon className="h-6 w-6 text-primary" />
+      </div>
       <p className="font-display text-4xl font-bold text-gradient md:text-5xl">
         {value}{stat.suffix}
       </p>
-      {stat.unit && <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
-      <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground md:text-sm">{stat.label}</p>
+      {stat.unit && <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
+      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-foreground/90">{stat.label}</p>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{stat.desc}</p>
     </div>
   );
 }
@@ -926,12 +967,15 @@ function CareerJourney() {
       {/* Achievements */}
       <div className="mt-20">
         <Reveal>
-          <div className="mb-8 text-center">
+          <div className="mx-auto mb-10 max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Achievements</p>
-            <h3 className="mt-2 font-display text-3xl font-bold md:text-4xl">Progress worth measuring</h3>
+            <h3 className="mt-3 font-display text-3xl font-bold md:text-4xl">Progress Worth Measuring</h3>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              A snapshot of my practical experience, analytics projects and continuous learning journey.
+            </p>
           </div>
         </Reveal>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {STATS.map((s) => <StatItem key={s.label} stat={s} />)}
         </div>
       </div>
