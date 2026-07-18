@@ -928,13 +928,21 @@ function JourneyItem({ step, index }: { step: (typeof JOURNEY)[number]; index: n
 function StatItem({ stat }: { stat: (typeof STATS)[number] }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.4);
   const value = useCounter(stat.value, inView);
+  const Icon = stat.icon;
   return (
-    <div ref={ref} className="glass rounded-3xl p-6 text-center hover-lift md:p-8">
+    <div
+      ref={ref}
+      className="glass group relative flex h-full flex-col rounded-3xl p-6 text-center transition-all duration-500 hover-lift hover:border-primary/40 md:p-8"
+    >
+      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/15">
+        <Icon className="h-6 w-6 text-primary" />
+      </div>
       <p className="font-display text-4xl font-bold text-gradient md:text-5xl">
         {value}{stat.suffix}
       </p>
-      {stat.unit && <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
-      <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground md:text-sm">{stat.label}</p>
+      {stat.unit && <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
+      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-foreground/90">{stat.label}</p>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{stat.desc}</p>
     </div>
   );
 }
