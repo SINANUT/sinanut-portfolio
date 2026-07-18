@@ -1507,15 +1507,23 @@ function Footer() {
   return (
     <footer className="relative border-t border-border/40">
       <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 py-14 md:flex-row md:items-start md:justify-between">
+
+      <div className="mx-auto w-full max-w-7xl px-6 pt-14 pb-6 text-center">
+        <p className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+          Turning Data into <span className="text-gradient">Decisions.</span>
+        </p>
+      </div>
+
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 pb-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
           <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold">
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow">MS</span>
             <span>Muhammed Sinan U T<span className="text-gradient">.</span></span>
           </a>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Data Analyst · BI Analyst · Power BI Developer — turning data into decisions.
+            Data Analyst · BI Analyst · Power BI Developer
           </p>
+          <p className="mt-1 text-sm text-muted-foreground">{LOCATION}</p>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -1550,9 +1558,9 @@ function Footer() {
           </button>
         </div>
       </div>
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground md:flex-row">
-        <p>© {new Date().getFullYear()} Muhammed Sinan U T · All rights reserved.</p>
-        <p>Designed & built with care in Kerala, India.</p>
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-1.5 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground/80 md:flex-row">
+        <p>© 2026 Muhammed Sinan U T. All Rights Reserved.</p>
+        <p className="text-[11px] tracking-wide text-muted-foreground/60">Designed & Developed by Muhammed Sinan U T</p>
       </div>
     </footer>
   );
