@@ -967,12 +967,15 @@ function CareerJourney() {
       {/* Achievements */}
       <div className="mt-20">
         <Reveal>
-          <div className="mb-8 text-center">
+          <div className="mx-auto mb-10 max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Achievements</p>
-            <h3 className="mt-2 font-display text-3xl font-bold md:text-4xl">Progress worth measuring</h3>
+            <h3 className="mt-3 font-display text-3xl font-bold md:text-4xl">Progress Worth Measuring</h3>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              A snapshot of my practical experience, analytics projects and continuous learning journey.
+            </p>
           </div>
         </Reveal>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {STATS.map((s) => <StatItem key={s.label} stat={s} />)}
         </div>
       </div>
