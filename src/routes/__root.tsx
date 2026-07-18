@@ -14,20 +14,34 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-background px-4">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-hero opacity-70"
+      />
+      <div className="relative z-10 max-w-lg text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+          Error 404
         </p>
-        <div className="mt-6">
+        <h1 className="mt-4 text-6xl font-bold tracking-tight text-gradient sm:text-7xl">
+          Page not found
+        </h1>
+        <p className="mt-5 text-base text-muted-foreground">
+          The page you're looking for doesn't exist or has moved. Let's get you back to the portfolio.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            Go home
+            Return home
           </Link>
+          <a
+            href="mailto:muhammedsinan.ullattil@gmail.com"
+            className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/40 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Contact me
+          </a>
         </div>
       </div>
     </div>
@@ -77,26 +91,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Muhammed Sinan U T — Data Analyst & BI Developer" },
+      { title: "Muhammed Sinan U T | Data Analyst Portfolio" },
       {
         name: "description",
         content:
-          "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions.",
+          "Data Analyst portfolio of Muhammed Sinan U T showcasing Power BI dashboards, SQL projects, Python analytics, business intelligence solutions, and real-world data analysis projects.",
       },
+      {
+        name: "keywords",
+        content:
+          "Data Analyst, Business Intelligence, Power BI, SQL, Python, Pandas, Excel, Dashboard, Business Analytics, Data Visualization, Portfolio, Muhammed Sinan U T",
+      },
+      { name: "author", content: "Muhammed Sinan U T" },
       { name: "theme-color", content: "#0F172A" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Muhammed Sinan U T" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Muhammed Sinan U T — Data Analyst & BI Developer" },
-      { name: "twitter:title", content: "Muhammed Sinan U T — Data Analyst & BI Developer" },
-      { property: "og:description", content: "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions." },
-      { name: "twitter:description", content: "Portfolio of Muhammed Sinan U T — Data Analyst, Business Intelligence Analyst and Power BI Developer building dashboards, insights and BI solutions." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2a3c125d-edea-4a20-9016-4ba84ec34531/id-preview-ab405738--7a65571d-fd82-4dbb-a594-56e904027c64.lovable.app-1784010455288.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2a3c125d-edea-4a20-9016-4ba84ec34531/id-preview-ab405738--7a65571d-fd82-4dbb-a594-56e904027c64.lovable.app-1784010455288.png" },
+      { name: "twitter:creator", content: "@sinanut" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
