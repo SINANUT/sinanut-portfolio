@@ -363,7 +363,7 @@ function useCounter(target: number, active: boolean, duration = 1600) {
 
 function Section({ id, children, className }: { id: string; children: ReactNode; className?: string }) {
   return (
-    <section id={id} className={cn("relative scroll-mt-24 py-24 md:py-32", className)}>
+    <section id={id} className={cn("relative scroll-mt-24 py-16 md:py-20", className)}>
       <div className="mx-auto w-full max-w-7xl px-6">{children}</div>
     </section>
   );
@@ -388,14 +388,14 @@ function Reveal({ children, delay = 0, className }: { children: ReactNode; delay
 
 function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return (
-    <div className="mx-auto mb-16 max-w-3xl text-center">
-      <Badge variant="outline" className="glass mb-4 border-primary/30 px-3 py-1 text-xs tracking-widest uppercase text-primary">
+    <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
+      <Badge variant="outline" className="glass mb-3 border-primary/30 px-3 py-1 text-xs tracking-widest uppercase text-primary">
         {eyebrow}
       </Badge>
-      <h2 className="text-balance text-4xl font-bold md:text-5xl lg:text-6xl">
+      <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
         {title}
       </h2>
-      {subtitle && <p className="mt-4 text-base text-muted-foreground md:text-lg">{subtitle}</p>}
+      {subtitle && <p className="mt-3 text-sm text-muted-foreground md:text-base">{subtitle}</p>}
     </div>
   );
 }
