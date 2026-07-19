@@ -910,102 +910,61 @@ function CareerJourney() {
   return (
     <Section id="journey">
       <SectionHeader
-        eyebrow="Career Journey"
-        title="Career Journey"
-        subtitle="My transition from Economics to Data Analytics through continuous learning, practical projects and real-world business analytics."
+        eyebrow="Experience & Education"
+        title="Experience & Education"
+        subtitle="Economics graduate turned Data Analyst — through structured training, an internship and real-world projects."
       />
 
       <div className="mx-auto max-w-4xl">
-        <div className="relative border-l-2 border-dashed border-primary/25 pl-10">
+        <div className="relative border-l-2 border-dashed border-primary/25 pl-8 md:pl-10">
           {JOURNEY.map((step, i) => (
             <JourneyItem key={step.title} step={step} index={i} />
           ))}
         </div>
       </div>
 
-      {/* Achievements */}
-      <div className="mt-20">
-        <Reveal>
-          <div className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Achievements</p>
-            <h3 className="mt-3 font-display text-3xl font-bold md:text-4xl">Progress Worth Measuring</h3>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              A snapshot of my practical experience, analytics projects and continuous learning journey.
-            </p>
-          </div>
-        </Reveal>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+      {/* Achievements — 3 compact stats */}
+      <div className="mt-14">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-5">
           {STATS.map((s) => <StatItem key={s.label} stat={s} />)}
         </div>
       </div>
 
-      {/* Professional Development / Certification */}
-      <div className="mt-20">
+      {/* Professional Development — understated inline card */}
+      <div className="mx-auto mt-12 max-w-3xl">
         <Reveal>
-          <div className="mb-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Professional Development</p>
-            <h3 className="mt-2 font-display text-3xl font-bold md:text-4xl">Certification</h3>
-          </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <Card className="glass mx-auto max-w-4xl overflow-hidden rounded-3xl border-primary/10 p-0 shadow-card hover-lift">
-            <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+          <Card className="glass overflow-hidden rounded-2xl border-primary/10 p-4 md:p-5">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
               <a
                 href={CERT_PDF_URL}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="View HACA Certificate"
-                className="group relative block overflow-hidden bg-background/40 p-4"
+                className="group relative block w-full shrink-0 overflow-hidden rounded-xl ring-1 ring-primary/20 sm:w-32"
               >
-                <div className="relative overflow-hidden rounded-2xl ring-1 ring-primary/20">
-                  <img
-                    src={CERT_THUMB_URL}
-                    alt="HACA Advanced Data Analytics with AI — Certificate of Completion"
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-                </div>
+                <img
+                  src={CERT_THUMB_URL}
+                  alt="HACA Advanced Data Analytics with AI — Certificate"
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </a>
-
-              <div className="flex flex-col justify-center p-6 md:p-8">
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-accent">
-                    <Award className="h-3 w-3" /> Verified
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-accent/40 bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-accent">
+                    <Award className="h-3 w-3" /> Certification
                   </span>
-                  <span className="text-xs text-muted-foreground">14 July 2026</span>
+                  <span className="text-[11px] text-muted-foreground">HACA · July 2026</span>
                 </div>
-                <h4 className="mt-3 text-xl font-semibold md:text-2xl">Advanced Data Analytics with AI</h4>
-                <p className="mt-1 text-sm font-medium text-primary">Haris &amp; Co. Academy (HACA)</p>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  Industry-focused program covering SQL, Python, Power BI, Tableau, Excel, EDA, dashboarding
-                  and AI-assisted analytics.
-                </p>
-
-                <dl className="mt-4 grid grid-cols-2 gap-3 text-xs">
-                  <div className="rounded-xl border border-border/50 p-3">
-                    <dt className="uppercase tracking-widest text-muted-foreground">Certificate ID</dt>
-                    <dd className="mt-1 font-mono text-sm text-foreground">TS-26-DA091</dd>
-                  </div>
-                  <div className="rounded-xl border border-border/50 p-3">
-                    <dt className="uppercase tracking-widest text-muted-foreground">Issued by</dt>
-                    <dd className="mt-1 text-sm text-foreground">HACA Tech School</dd>
-                  </div>
-                </dl>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <Button asChild size="sm" variant="outline" className="glass border-primary/30">
-                    <a href={CERT_PDF_URL} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> View Certificate
-                    </a>
-                  </Button>
-                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-                    <a href={CERT_PDF_URL} download>
-                      <Download className="mr-1.5 h-3.5 w-3.5" /> Download
-                    </a>
-                  </Button>
-                </div>
+                <h4 className="mt-1.5 text-sm font-semibold md:text-base">Advanced Data Analytics with AI</h4>
+                <p className="text-xs text-muted-foreground">SQL · Python · Power BI · Tableau · EDA · Dashboarding</p>
+              </div>
+              <div className="flex shrink-0 gap-2">
+                <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                  <a href={CERT_PDF_URL} target="_blank" rel="noreferrer">
+                    <ExternalLink className="mr-1 h-3 w-3" /> View
+                  </a>
+                </Button>
               </div>
             </div>
           </Card>
