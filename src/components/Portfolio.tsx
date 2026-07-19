@@ -891,17 +891,15 @@ function StatItem({ stat }: { stat: (typeof STATS)[number] }) {
   return (
     <div
       ref={ref}
-      className="glass group relative flex h-full flex-col rounded-3xl p-6 text-center transition-all duration-500 hover-lift hover:border-primary/40 md:p-8"
+      className="glass group relative flex h-full flex-col items-center rounded-2xl p-5 text-center transition-all duration-500 hover-lift hover:border-primary/40"
     >
-      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/15">
-        <Icon className="h-6 w-6 text-primary" />
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110">
+        <Icon className="h-5 w-5 text-primary" />
       </div>
-      <p className="font-display text-4xl font-bold text-gradient md:text-5xl">
+      <p className="font-display text-3xl font-bold text-gradient md:text-4xl">
         {value}{stat.suffix}
       </p>
-      {stat.unit && <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
-      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-foreground/90">{stat.label}</p>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{stat.desc}</p>
+      <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-foreground/90">{stat.label}</p>
     </div>
   );
 }
