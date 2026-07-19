@@ -248,21 +248,14 @@ const STATS: {
     value: 8,
     suffix: "+",
     icon: BarChart3,
-    desc: "End-to-end analytics work spanning data cleaning, EDA, dashboard development, SQL querying and business insight generation.",
+    desc: "End-to-end analytics work — data cleaning, EDA, dashboards and business insights.",
   },
   {
     label: "Power BI Dashboards",
     value: 4,
     suffix: "+",
     icon: Layers,
-    desc: "Interactive dashboards with KPIs, filters and visuals for HR, Sales, Entertainment and Student Wellbeing datasets.",
-  },
-  {
-    label: "SQL & Python Projects",
-    value: 4,
-    suffix: "+",
-    icon: Database,
-    desc: "Practical projects using SQL, Python, Pandas, NumPy and visualization techniques to solve real business problems.",
+    desc: "Interactive dashboards with KPIs and filters across HR, Sales and Wellbeing datasets.",
   },
   {
     label: "Industry Internship",
@@ -270,7 +263,7 @@ const STATS: {
     suffix: "",
     unit: "Internship",
     icon: Briefcase,
-    desc: "Data Analyst Internship at Haris & Co. Academy (HACA) — hands-on work with real datasets, reporting and dashboards.",
+    desc: "Data Analyst Internship at HACA — real datasets, reporting and stakeholder dashboards.",
   },
 ];
 
