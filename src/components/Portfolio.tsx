@@ -765,83 +765,55 @@ function Projects() {
     <Section id="projects">
       <SectionHeader
         eyebrow="Case Studies"
-        title="Featured case studies"
-        subtitle="Real analytics work — the business problem, the tools I reached for, and the insight that mattered."
+        title="Featured projects"
+        subtitle="Real analytics work — the business problem, the tools and the insight that mattered."
       />
-      <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-2">
+      <div className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-3">
         {PROJECTS.map((p, i) => (
-          <Reveal key={p.title} delay={i * 80}>
-            <Card className="glass group relative flex h-full flex-col overflow-hidden rounded-3xl border-primary/10 p-0 transition-all duration-500 hover-lift">
+          <Reveal key={p.title} delay={i * 60}>
+            <Card className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl border-primary/10 p-0 transition-all duration-500 hover-lift">
               {p.featured && (
-                <Badge className="absolute right-4 top-4 z-10 border-none bg-gradient-accent text-accent-foreground shadow-glow">
-                  <Star className="mr-1 h-3 w-3" /> Featured
+                <Badge className="absolute right-2.5 top-2.5 z-10 border-none bg-gradient-accent px-2 py-0.5 text-[10px] text-accent-foreground shadow-glow">
+                  <Star className="mr-1 h-2.5 w-2.5" /> Featured
                 </Badge>
               )}
 
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={p.image}
                   alt={`${p.title} preview`}
                   loading="lazy"
                   width={1024}
-                  height={576}
+                  height={640}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                <Badge variant="outline" className="absolute bottom-4 left-4 glass border-primary/30 text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                <Badge variant="outline" className="glass absolute bottom-2 left-2 border-primary/30 px-1.5 py-0 text-[10px]">
                   {p.tag}
                 </Badge>
               </div>
 
-              <div className="flex flex-1 flex-col p-7 md:p-8">
-                <h3 className="text-2xl font-semibold tracking-tight md:text-[1.6rem]">{p.title}</h3>
+              <div className="flex flex-1 flex-col p-4 md:p-5">
+                <h3 className="text-base font-semibold tracking-tight md:text-lg">{p.title}</h3>
+                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground md:text-[13px]">
+                  {p.problem}
+                </p>
 
-                <div className="mt-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary/80">
-                    Business Problem
-                  </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.problem}</p>
-                </div>
-
-                <p className="mt-4 text-sm leading-relaxed text-foreground/80">{p.desc}</p>
-
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {p.tech.map((t) => (
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {p.tech.slice(0, 3).map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-foreground/90"
+                      className="rounded-md border border-primary/20 bg-primary/10 px-1.5 py-0.5 text-[10px] font-medium text-foreground/90"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-primary/10 bg-background/40 p-5">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-accent" />
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">
-                      Key Insights
-                    </p>
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {p.insights.map((ins) => (
-                      <li key={ins} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
-                        <Check className="mt-0.5 h-4 w-4 flex-none text-primary" />
-                        <span>{ins}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto flex flex-wrap gap-2 pt-6">
-                  <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                <div className="mt-auto pt-4">
+                  <Button asChild size="sm" className="w-full bg-gradient-primary text-xs text-primary-foreground shadow-elegant">
                     <a href={p.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-1.5 h-3.5 w-3.5" /> GitHub
-                    </a>
-                  </Button>
-                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-                    <a href={p.github} target="_blank" rel="noopener noreferrer">
-                      View Case Study <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                      View Project <ArrowRight className="ml-1 h-3 w-3" />
                     </a>
                   </Button>
                 </div>
