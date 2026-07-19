@@ -661,9 +661,9 @@ function About() {
   return (
     <Section id="about">
       <SectionHeader eyebrow="About" title="Analyst by craft. Storyteller by instinct." />
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
         <Reveal>
-          <div className="relative">
+          <div className="relative mx-auto w-full max-w-sm">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-accent opacity-20 blur-xl" />
             <Card className="glass relative overflow-hidden rounded-3xl border-primary/20 p-1 shadow-elegant ring-1 ring-primary/25">
               <img src={profileImg} alt="Muhammed Sinan U T" loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full rounded-[1.35rem] object-cover object-center" />
@@ -671,39 +671,35 @@ function About() {
           </div>
         </Reveal>
         <Reveal delay={100}>
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+          <div className="space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
               I'm a <span className="text-foreground font-medium">Data Analyst</span> based in Malappuram, Kerala, with a background in
-              <span className="text-foreground font-medium"> BA Economics</span> and hands-on training through a
-              <span className="text-foreground font-medium"> Data Analytics Internship at HACA</span>. My work sits where economics meets
-              engineering — using data to answer the questions businesses actually care about.
+              <span className="text-foreground font-medium"> BA Economics</span> and a
+              <span className="text-foreground font-medium"> Data Analytics internship at HACA</span>.
             </p>
             <p>
-              I specialize in <span className="text-foreground font-medium">SQL, Python and Power BI</span> — building clean data pipelines,
-              interactive dashboards and reports that give teams a single source of truth. From raw CSVs to executive-ready visuals, I own
-              the full analytical workflow: <span className="text-foreground font-medium">data cleaning, EDA, modeling and storytelling</span>.
+              I work with <span className="text-foreground font-medium">SQL, Python and Power BI</span> to clean data, build dashboards
+              and turn raw numbers into decisions teams can act on.
             </p>
             <p>
-              What drives me is <span className="text-foreground font-medium">business intelligence with impact</span> — dashboards leaders open every
-              Monday, KPIs that shift decisions, insights that don't sit in a slide deck. I'm actively looking for
-              <span className="text-foreground font-medium"> Data Analyst, BI Analyst and Power BI Developer</span> roles where I can turn data into measurable outcomes.
+              Actively looking for <span className="text-foreground font-medium">Data Analyst, BI Analyst and Power BI Developer</span> roles
+              where I can drive measurable business outcomes.
             </p>
-            <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
+            <div className="grid grid-cols-4 gap-2 pt-2">
               {[
                 { icon: Brain, label: "Analytical" },
                 { icon: TrendingUp, label: "Business-first" },
                 { icon: Sparkles, label: "Storyteller" },
                 { icon: Zap, label: "Curious" },
               ].map((v) => (
-                <div key={v.label} className="glass rounded-2xl p-4 text-center">
-                  <v.icon className="mx-auto mb-2 h-5 w-5 text-primary" />
-                  <p className="text-sm font-medium text-foreground">{v.label}</p>
+                <div key={v.label} className="glass rounded-xl p-3 text-center">
+                  <v.icon className="mx-auto mb-1 h-4 w-4 text-primary" />
+                  <p className="text-[11px] font-medium text-foreground sm:text-xs">{v.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </Reveal>
-
       </div>
     </Section>
   );
