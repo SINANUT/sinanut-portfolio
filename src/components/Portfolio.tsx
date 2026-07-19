@@ -41,9 +41,7 @@ const NAV = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "gallery", label: "Gallery" },
-  { id: "journey", label: "Journey" },
-  { id: "resume", label: "Resume" },
+  { id: "journey", label: "Experience" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -250,21 +248,14 @@ const STATS: {
     value: 8,
     suffix: "+",
     icon: BarChart3,
-    desc: "End-to-end analytics work spanning data cleaning, EDA, dashboard development, SQL querying and business insight generation.",
+    desc: "End-to-end analytics work — data cleaning, EDA, dashboards and business insights.",
   },
   {
     label: "Power BI Dashboards",
     value: 4,
     suffix: "+",
     icon: Layers,
-    desc: "Interactive dashboards with KPIs, filters and visuals for HR, Sales, Entertainment and Student Wellbeing datasets.",
-  },
-  {
-    label: "SQL & Python Projects",
-    value: 4,
-    suffix: "+",
-    icon: Database,
-    desc: "Practical projects using SQL, Python, Pandas, NumPy and visualization techniques to solve real business problems.",
+    desc: "Interactive dashboards with KPIs and filters across HR, Sales and Wellbeing datasets.",
   },
   {
     label: "Industry Internship",
@@ -272,7 +263,7 @@ const STATS: {
     suffix: "",
     unit: "Internship",
     icon: Briefcase,
-    desc: "Data Analyst Internship at Haris & Co. Academy (HACA) — hands-on work with real datasets, reporting and dashboards.",
+    desc: "Data Analyst Internship at HACA — real datasets, reporting and stakeholder dashboards.",
   },
 ];
 
@@ -365,7 +356,7 @@ function useCounter(target: number, active: boolean, duration = 1600) {
 
 function Section({ id, children, className }: { id: string; children: ReactNode; className?: string }) {
   return (
-    <section id={id} className={cn("relative scroll-mt-24 py-24 md:py-32", className)}>
+    <section id={id} className={cn("relative scroll-mt-24 py-16 md:py-20", className)}>
       <div className="mx-auto w-full max-w-7xl px-6">{children}</div>
     </section>
   );
@@ -390,14 +381,14 @@ function Reveal({ children, delay = 0, className }: { children: ReactNode; delay
 
 function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return (
-    <div className="mx-auto mb-16 max-w-3xl text-center">
-      <Badge variant="outline" className="glass mb-4 border-primary/30 px-3 py-1 text-xs tracking-widest uppercase text-primary">
+    <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
+      <Badge variant="outline" className="glass mb-3 border-primary/30 px-3 py-1 text-xs tracking-widest uppercase text-primary">
         {eyebrow}
       </Badge>
-      <h2 className="text-balance text-4xl font-bold md:text-5xl lg:text-6xl">
+      <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
         {title}
       </h2>
-      {subtitle && <p className="mt-4 text-base text-muted-foreground md:text-lg">{subtitle}</p>}
+      {subtitle && <p className="mt-3 text-sm text-muted-foreground md:text-base">{subtitle}</p>}
     </div>
   );
 }
@@ -663,9 +654,9 @@ function About() {
   return (
     <Section id="about">
       <SectionHeader eyebrow="About" title="Analyst by craft. Storyteller by instinct." />
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
         <Reveal>
-          <div className="relative">
+          <div className="relative mx-auto w-full max-w-sm">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-accent opacity-20 blur-xl" />
             <Card className="glass relative overflow-hidden rounded-3xl border-primary/20 p-1 shadow-elegant ring-1 ring-primary/25">
               <img src={profileImg} alt="Muhammed Sinan U T" loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full rounded-[1.35rem] object-cover object-center" />
@@ -673,39 +664,35 @@ function About() {
           </div>
         </Reveal>
         <Reveal delay={100}>
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+          <div className="space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
               I'm a <span className="text-foreground font-medium">Data Analyst</span> based in Malappuram, Kerala, with a background in
-              <span className="text-foreground font-medium"> BA Economics</span> and hands-on training through a
-              <span className="text-foreground font-medium"> Data Analytics Internship at HACA</span>. My work sits where economics meets
-              engineering — using data to answer the questions businesses actually care about.
+              <span className="text-foreground font-medium"> BA Economics</span> and a
+              <span className="text-foreground font-medium"> Data Analytics internship at HACA</span>.
             </p>
             <p>
-              I specialize in <span className="text-foreground font-medium">SQL, Python and Power BI</span> — building clean data pipelines,
-              interactive dashboards and reports that give teams a single source of truth. From raw CSVs to executive-ready visuals, I own
-              the full analytical workflow: <span className="text-foreground font-medium">data cleaning, EDA, modeling and storytelling</span>.
+              I work with <span className="text-foreground font-medium">SQL, Python and Power BI</span> to clean data, build dashboards
+              and turn raw numbers into decisions teams can act on.
             </p>
             <p>
-              What drives me is <span className="text-foreground font-medium">business intelligence with impact</span> — dashboards leaders open every
-              Monday, KPIs that shift decisions, insights that don't sit in a slide deck. I'm actively looking for
-              <span className="text-foreground font-medium"> Data Analyst, BI Analyst and Power BI Developer</span> roles where I can turn data into measurable outcomes.
+              Actively looking for <span className="text-foreground font-medium">Data Analyst, BI Analyst and Power BI Developer</span> roles
+              where I can drive measurable business outcomes.
             </p>
-            <div className="grid grid-cols-2 gap-4 pt-4 sm:grid-cols-4">
+            <div className="grid grid-cols-4 gap-2 pt-2">
               {[
                 { icon: Brain, label: "Analytical" },
                 { icon: TrendingUp, label: "Business-first" },
                 { icon: Sparkles, label: "Storyteller" },
                 { icon: Zap, label: "Curious" },
               ].map((v) => (
-                <div key={v.label} className="glass rounded-2xl p-4 text-center">
-                  <v.icon className="mx-auto mb-2 h-5 w-5 text-primary" />
-                  <p className="text-sm font-medium text-foreground">{v.label}</p>
+                <div key={v.label} className="glass rounded-xl p-3 text-center">
+                  <v.icon className="mx-auto mb-1 h-4 w-4 text-primary" />
+                  <p className="text-[11px] font-medium text-foreground sm:text-xs">{v.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </Reveal>
-
       </div>
     </Section>
   );
@@ -771,83 +758,55 @@ function Projects() {
     <Section id="projects">
       <SectionHeader
         eyebrow="Case Studies"
-        title="Featured case studies"
-        subtitle="Real analytics work — the business problem, the tools I reached for, and the insight that mattered."
+        title="Featured projects"
+        subtitle="Real analytics work — the business problem, the tools and the insight that mattered."
       />
-      <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-2">
+      <div className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-3">
         {PROJECTS.map((p, i) => (
-          <Reveal key={p.title} delay={i * 80}>
-            <Card className="glass group relative flex h-full flex-col overflow-hidden rounded-3xl border-primary/10 p-0 transition-all duration-500 hover-lift">
+          <Reveal key={p.title} delay={i * 60}>
+            <Card className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl border-primary/10 p-0 transition-all duration-500 hover-lift">
               {p.featured && (
-                <Badge className="absolute right-4 top-4 z-10 border-none bg-gradient-accent text-accent-foreground shadow-glow">
-                  <Star className="mr-1 h-3 w-3" /> Featured
+                <Badge className="absolute right-2.5 top-2.5 z-10 border-none bg-gradient-accent px-2 py-0.5 text-[10px] text-accent-foreground shadow-glow">
+                  <Star className="mr-1 h-2.5 w-2.5" /> Featured
                 </Badge>
               )}
 
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={p.image}
                   alt={`${p.title} preview`}
                   loading="lazy"
                   width={1024}
-                  height={576}
+                  height={640}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                <Badge variant="outline" className="absolute bottom-4 left-4 glass border-primary/30 text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                <Badge variant="outline" className="glass absolute bottom-2 left-2 border-primary/30 px-1.5 py-0 text-[10px]">
                   {p.tag}
                 </Badge>
               </div>
 
-              <div className="flex flex-1 flex-col p-7 md:p-8">
-                <h3 className="text-2xl font-semibold tracking-tight md:text-[1.6rem]">{p.title}</h3>
+              <div className="flex flex-1 flex-col p-4 md:p-5">
+                <h3 className="text-base font-semibold tracking-tight md:text-lg">{p.title}</h3>
+                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground md:text-[13px]">
+                  {p.problem}
+                </p>
 
-                <div className="mt-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary/80">
-                    Business Problem
-                  </p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.problem}</p>
-                </div>
-
-                <p className="mt-4 text-sm leading-relaxed text-foreground/80">{p.desc}</p>
-
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {p.tech.map((t) => (
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {p.tech.slice(0, 3).map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-foreground/90"
+                      className="rounded-md border border-primary/20 bg-primary/10 px-1.5 py-0.5 text-[10px] font-medium text-foreground/90"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-primary/10 bg-background/40 p-5">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-accent" />
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">
-                      Key Insights
-                    </p>
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {p.insights.map((ins) => (
-                      <li key={ins} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
-                        <Check className="mt-0.5 h-4 w-4 flex-none text-primary" />
-                        <span>{ins}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto flex flex-wrap gap-2 pt-6">
-                  <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                <div className="mt-auto pt-4">
+                  <Button asChild size="sm" className="w-full bg-gradient-primary text-xs text-primary-foreground shadow-elegant">
                     <a href={p.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-1.5 h-3.5 w-3.5" /> GitHub
-                    </a>
-                  </Button>
-                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-                    <a href={p.github} target="_blank" rel="noopener noreferrer">
-                      View Case Study <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                      View Project <ArrowRight className="ml-1 h-3 w-3" />
                     </a>
                   </Button>
                 </div>
@@ -932,17 +891,15 @@ function StatItem({ stat }: { stat: (typeof STATS)[number] }) {
   return (
     <div
       ref={ref}
-      className="glass group relative flex h-full flex-col rounded-3xl p-6 text-center transition-all duration-500 hover-lift hover:border-primary/40 md:p-8"
+      className="glass group relative flex h-full flex-col items-center rounded-2xl p-5 text-center transition-all duration-500 hover-lift hover:border-primary/40"
     >
-      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary/15">
-        <Icon className="h-6 w-6 text-primary" />
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110">
+        <Icon className="h-5 w-5 text-primary" />
       </div>
-      <p className="font-display text-4xl font-bold text-gradient md:text-5xl">
+      <p className="font-display text-3xl font-bold text-gradient md:text-4xl">
         {value}{stat.suffix}
       </p>
-      {stat.unit && <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-accent">{stat.unit}</p>}
-      <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-foreground/90">{stat.label}</p>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{stat.desc}</p>
+      <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-foreground/90">{stat.label}</p>
     </div>
   );
 }
@@ -951,102 +908,61 @@ function CareerJourney() {
   return (
     <Section id="journey">
       <SectionHeader
-        eyebrow="Career Journey"
-        title="Career Journey"
-        subtitle="My transition from Economics to Data Analytics through continuous learning, practical projects and real-world business analytics."
+        eyebrow="Experience & Education"
+        title="Experience & Education"
+        subtitle="Economics graduate turned Data Analyst — through structured training, an internship and real-world projects."
       />
 
       <div className="mx-auto max-w-4xl">
-        <div className="relative border-l-2 border-dashed border-primary/25 pl-10">
+        <div className="relative border-l-2 border-dashed border-primary/25 pl-8 md:pl-10">
           {JOURNEY.map((step, i) => (
             <JourneyItem key={step.title} step={step} index={i} />
           ))}
         </div>
       </div>
 
-      {/* Achievements */}
-      <div className="mt-20">
-        <Reveal>
-          <div className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Achievements</p>
-            <h3 className="mt-3 font-display text-3xl font-bold md:text-4xl">Progress Worth Measuring</h3>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              A snapshot of my practical experience, analytics projects and continuous learning journey.
-            </p>
-          </div>
-        </Reveal>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+      {/* Achievements — 3 compact stats */}
+      <div className="mt-14">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-5">
           {STATS.map((s) => <StatItem key={s.label} stat={s} />)}
         </div>
       </div>
 
-      {/* Professional Development / Certification */}
-      <div className="mt-20">
+      {/* Professional Development — understated inline card */}
+      <div className="mx-auto mt-12 max-w-3xl">
         <Reveal>
-          <div className="mb-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-primary">Professional Development</p>
-            <h3 className="mt-2 font-display text-3xl font-bold md:text-4xl">Certification</h3>
-          </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <Card className="glass mx-auto max-w-4xl overflow-hidden rounded-3xl border-primary/10 p-0 shadow-card hover-lift">
-            <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+          <Card className="glass overflow-hidden rounded-2xl border-primary/10 p-4 md:p-5">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
               <a
                 href={CERT_PDF_URL}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="View HACA Certificate"
-                className="group relative block overflow-hidden bg-background/40 p-4"
+                className="group relative block w-full shrink-0 overflow-hidden rounded-xl ring-1 ring-primary/20 sm:w-32"
               >
-                <div className="relative overflow-hidden rounded-2xl ring-1 ring-primary/20">
-                  <img
-                    src={CERT_THUMB_URL}
-                    alt="HACA Advanced Data Analytics with AI — Certificate of Completion"
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-                </div>
+                <img
+                  src={CERT_THUMB_URL}
+                  alt="HACA Advanced Data Analytics with AI — Certificate"
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </a>
-
-              <div className="flex flex-col justify-center p-6 md:p-8">
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-accent">
-                    <Award className="h-3 w-3" /> Verified
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-accent/40 bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-accent">
+                    <Award className="h-3 w-3" /> Certification
                   </span>
-                  <span className="text-xs text-muted-foreground">14 July 2026</span>
+                  <span className="text-[11px] text-muted-foreground">HACA · July 2026</span>
                 </div>
-                <h4 className="mt-3 text-xl font-semibold md:text-2xl">Advanced Data Analytics with AI</h4>
-                <p className="mt-1 text-sm font-medium text-primary">Haris &amp; Co. Academy (HACA)</p>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  Industry-focused program covering SQL, Python, Power BI, Tableau, Excel, EDA, dashboarding
-                  and AI-assisted analytics.
-                </p>
-
-                <dl className="mt-4 grid grid-cols-2 gap-3 text-xs">
-                  <div className="rounded-xl border border-border/50 p-3">
-                    <dt className="uppercase tracking-widest text-muted-foreground">Certificate ID</dt>
-                    <dd className="mt-1 font-mono text-sm text-foreground">TS-26-DA091</dd>
-                  </div>
-                  <div className="rounded-xl border border-border/50 p-3">
-                    <dt className="uppercase tracking-widest text-muted-foreground">Issued by</dt>
-                    <dd className="mt-1 text-sm text-foreground">HACA Tech School</dd>
-                  </div>
-                </dl>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  <Button asChild size="sm" variant="outline" className="glass border-primary/30">
-                    <a href={CERT_PDF_URL} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> View Certificate
-                    </a>
-                  </Button>
-                  <Button asChild size="sm" className="bg-gradient-primary text-primary-foreground shadow-elegant">
-                    <a href={CERT_PDF_URL} download>
-                      <Download className="mr-1.5 h-3.5 w-3.5" /> Download
-                    </a>
-                  </Button>
-                </div>
+                <h4 className="mt-1.5 text-sm font-semibold md:text-base">Advanced Data Analytics with AI</h4>
+                <p className="text-xs text-muted-foreground">SQL · Python · Power BI · Tableau · EDA · Dashboarding</p>
+              </div>
+              <div className="flex shrink-0 gap-2">
+                <Button asChild size="sm" variant="outline" className="glass border-primary/30">
+                  <a href={CERT_PDF_URL} target="_blank" rel="noreferrer">
+                    <ExternalLink className="mr-1 h-3 w-3" /> View
+                  </a>
+                </Button>
               </div>
             </div>
           </Card>
@@ -1547,64 +1463,37 @@ function Contact() {
 /* ------------------------------ Footer ------------------------------ */
 
 function Footer() {
-  const quickLinks = NAV.filter((n) => ["about", "projects", "gallery", "journey", "resume", "contact"].includes(n.id));
   return (
     <footer className="relative border-t border-border/40">
       <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-
-      <div className="mx-auto w-full max-w-7xl px-6 pt-14 pb-6 text-center">
-        <p className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-          Turning Data into <span className="text-gradient">Decisions.</span>
-        </p>
-      </div>
-
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-6 pb-12 md:flex-row md:items-start md:justify-between">
-        <div className="max-w-sm">
-          <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow">MS</span>
-            <span>Muhammed Sinan U T<span className="text-gradient">.</span></span>
-          </a>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Data Analyst · BI Analyst · Power BI Developer
-          </p>
-          <p className="mt-1 text-sm text-muted-foreground">{LOCATION}</p>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Quick Links</p>
-          <ul className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-3">
-            {quickLinks.map((n) => (
-              <li key={n.id}>
-                <a href={`#${n.id}`} className="text-muted-foreground transition-colors hover:text-foreground">{n.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Follow</p>
-          <div className="flex gap-2.5">
-            {[
-              { Icon: Github, href: GITHUB_URL, label: "GitHub" },
-              { Icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
-              { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
-            ].map(({ Icon, href, label }) => (
-              <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-xl border border-border/60 bg-muted/40 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-gradient-primary hover:text-primary-foreground">
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 md:flex-row">
+        <div className="flex items-center gap-3">
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow font-display text-sm font-bold">MS</span>
+          <div className="text-sm">
+            <p className="font-display font-semibold">
+              Turning Data into <span className="text-gradient">Decisions.</span>
+            </p>
+            <p className="text-xs text-muted-foreground">© 2026 Muhammed Sinan U T</p>
           </div>
+        </div>
+        <div className="flex items-center gap-2">
+          {[
+            { Icon: Github, href: GITHUB_URL, label: "GitHub" },
+            { Icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
+            { Icon: Mail, href: `mailto:${EMAIL}`, label: "Email" },
+          ].map(({ Icon, href, label }) => (
+            <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label} className="grid h-9 w-9 place-items-center rounded-lg border border-border/60 bg-muted/40 text-muted-foreground transition-all hover:border-primary/40 hover:bg-gradient-primary hover:text-primary-foreground">
+              <Icon className="h-4 w-4" />
+            </a>
+          ))}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground"
+            aria-label="Back to top"
+            className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground"
           >
-            <ArrowUp className="h-3.5 w-3.5" /> Back to top
+            <ArrowUp className="h-3.5 w-3.5" /> Top
           </button>
         </div>
-      </div>
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-1.5 border-t border-border/40 px-6 py-6 text-xs text-muted-foreground/80 md:flex-row">
-        <p>© 2026 Muhammed Sinan U T. All Rights Reserved.</p>
-        <p className="text-[11px] tracking-wide text-muted-foreground/60">Designed & Developed by Muhammed Sinan U T</p>
       </div>
     </footer>
   );
@@ -1721,15 +1610,8 @@ export default function Portfolio() {
         <About />
         <Skills />
         <Projects />
-        <DashboardGallery />
         <CareerJourney />
-        <Services />
-        <WhyWorkWithMe />
-        <Testimonials />
-        <Resume />
-        <GitHubSection />
         <Contact />
-        <CTASection />
       </main>
       <Footer />
       <BackToTop />
