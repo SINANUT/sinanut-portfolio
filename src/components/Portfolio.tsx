@@ -571,23 +571,23 @@ function Hero() {
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
             Turning raw data into actionable business insights through analytics, visualization and storytelling — with SQL, Python, Power BI and Excel.
           </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
-              <a href="#resume"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
-              <a href="#projects">View My Work <ArrowRight className="ml-2 h-4 w-4" /></a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
-              <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> GitHub</a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="glass border-primary/30">
-              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-4 w-4" /> LinkedIn</a>
-            </Button>
-            <Button asChild size="lg" variant="ghost">
-              <a href="#contact"><Mail className="mr-2 h-4 w-4" /> Contact Me</a>
-            </Button>
+          <div className="mt-10 flex flex-col gap-3 sm:max-w-md">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+                <a href="#resume"><Download className="mr-2 h-4 w-4" /> Download Resume</a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                <a href="#projects">View My Work <ArrowRight className="ml-2 h-4 w-4" /></a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                <a href={GITHUB_URL} target="_blank" rel="noreferrer"><Github className="mr-2 h-4 w-4" /> GitHub</a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="glass border-primary/30">
+                <a href={LINKEDIN_URL} target="_blank" rel="noreferrer"><Linkedin className="mr-2 h-4 w-4" /> LinkedIn</a>
+              </Button>
+            </div>
           </div>
+
 
           <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
             <a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-foreground"><Github className="h-5 w-5" /></a>
