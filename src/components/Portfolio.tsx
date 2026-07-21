@@ -654,17 +654,9 @@ function About() {
   return (
     <Section id="about">
       <SectionHeader eyebrow="About" title="Analyst by craft. Storyteller by instinct." />
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
-        <Reveal>
-          <div className="relative mx-auto w-full max-w-sm">
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-accent opacity-20 blur-xl" />
-            <Card className="glass relative overflow-hidden rounded-3xl border-primary/20 p-1 shadow-elegant ring-1 ring-primary/25">
-              <img src={profileImg} alt="Muhammed Sinan U T" loading="lazy" decoding="async" className="aspect-[4/5] h-full w-full rounded-[1.35rem] object-cover object-center" />
-            </Card>
-          </div>
-        </Reveal>
+      <div className="mx-auto max-w-3xl">
         <Reveal delay={100}>
-          <div className="space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+          <div className="space-y-5 text-center text-base leading-relaxed text-muted-foreground md:text-lg">
             <p>
               I'm a <span className="text-foreground font-medium">Data Analyst</span> based in Malappuram, Kerala, with a background in
               <span className="text-foreground font-medium"> BA Economics</span> and a
@@ -678,7 +670,7 @@ function About() {
               Actively looking for <span className="text-foreground font-medium">Data Analyst, BI Analyst and Power BI Developer</span> roles
               where I can drive measurable business outcomes.
             </p>
-            <div className="grid grid-cols-4 gap-2 pt-2">
+            <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 pt-4">
               {[
                 { icon: Brain, label: "Analytical" },
                 { icon: TrendingUp, label: "Business-first" },
@@ -695,6 +687,7 @@ function About() {
         </Reveal>
       </div>
     </Section>
+
   );
 }
 
