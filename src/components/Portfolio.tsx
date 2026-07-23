@@ -1367,7 +1367,7 @@ function Contact() {
       />
       <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
-          <div className="flex h-full flex-col gap-4">
+          <div className="flex h-full flex-col gap-3">
             {[
               { icon: Mail, label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
               { icon: Phone, label: "Phone", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
@@ -1377,24 +1377,24 @@ function Contact() {
             ].map((c) => {
               const Inner = (
                 <>
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary">
-                    <c.icon className="h-5 w-5 text-primary-foreground" />
+                  <div className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-primary">
+                    <c.icon className="h-4 w-4 text-primary-foreground" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</p>
-                    <p className="truncate font-medium">{c.value}</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</p>
+                    <p className="truncate text-sm font-medium">{c.value}</p>
                   </div>
                 </>
               );
               return (
-                <Card key={c.label} className="glass flex items-center gap-4 rounded-2xl border-primary/10 p-5 transition-colors hover:border-primary/40">
+                <Card key={c.label} className="glass flex items-center gap-3 rounded-xl border-primary/10 px-4 py-3 transition-colors hover:border-primary/40">
                   {c.href ? (
-                    <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex flex-1 items-center gap-4">{Inner}</a>
+                    <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex flex-1 items-center gap-3">{Inner}</a>
                   ) : Inner}
                 </Card>
               );
             })}
-            <div className="glass mt-auto flex items-center justify-around rounded-2xl border-primary/10 p-5">
+            <div className="glass mt-auto flex items-center justify-around rounded-xl border-primary/10 px-4 py-3">
               {[
                 { icon: Github, href: GITHUB_URL, label: "GitHub" },
                 { icon: Linkedin, href: LINKEDIN_URL, label: "LinkedIn" },
@@ -1408,7 +1408,7 @@ function Contact() {
                   target={s.href.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer"
                   aria-label={s.label}
-                  className="grid h-11 w-11 place-items-center rounded-xl bg-muted/60 text-muted-foreground transition-all hover:scale-110 hover:bg-gradient-primary hover:text-primary-foreground"
+                  className="grid h-9 w-9 place-items-center rounded-lg bg-muted/60 text-muted-foreground transition-all hover:scale-110 hover:bg-gradient-primary hover:text-primary-foreground"
                 >
                   <s.icon className="h-4 w-4" />
                 </a>
@@ -1419,35 +1419,36 @@ function Contact() {
         </Reveal>
 
         <Reveal delay={100}>
-          <Card className="glass rounded-3xl border-primary/10 p-8">
+          <Card className="glass rounded-3xl border-primary/10 p-6">
             <form
-              className="grid gap-5"
+              className="grid gap-4"
               onSubmit={(e) => { e.preventDefault(); setSent(true); setTimeout(() => setSent(false), 3000); }}
             >
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Name</label>
-                  <Input required placeholder="Your full name" className="glass h-11 border-primary/20" />
+                  <label className="mb-1.5 block text-xs uppercase tracking-widest text-muted-foreground">Name</label>
+                  <Input required placeholder="Your full name" className="glass h-10 border-primary/20" />
                 </div>
                 <div>
-                  <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Email</label>
-                  <Input required type="email" placeholder="you@company.com" className="glass h-11 border-primary/20" />
+                  <label className="mb-1.5 block text-xs uppercase tracking-widest text-muted-foreground">Email</label>
+                  <Input required type="email" placeholder="you@company.com" className="glass h-10 border-primary/20" />
                 </div>
               </div>
               <div>
-                <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
-                <Input required placeholder="Role opportunity, project inquiry, collaboration…" className="glass h-11 border-primary/20" />
+                <label className="mb-1.5 block text-xs uppercase tracking-widest text-muted-foreground">Subject</label>
+                <Input required placeholder="Role opportunity, project inquiry, collaboration…" className="glass h-10 border-primary/20" />
               </div>
               <div>
-                <label className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">Message</label>
-                <Textarea required rows={6} placeholder="Tell me a bit about the role or project you have in mind…" className="glass border-primary/20" />
+                <label className="mb-1.5 block text-xs uppercase tracking-widest text-muted-foreground">Message</label>
+                <Textarea required placeholder="Tell me a bit about the role or project you have in mind…" className="glass min-h-[130px] border-primary/20" />
               </div>
-              <Button type="submit" size="lg" className="group h-14 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 hover:shadow-glow">
+              <Button type="submit" size="lg" className="group h-12 w-full bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant transition-all duration-300 hover:-translate-y-0.5 hover:opacity-95 hover:shadow-glow">
                 {sent ? <><Check className="mr-2 h-5 w-5" /> Message sent</> : <><Send className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" /> Send Message</>}
               </Button>
             </form>
           </Card>
         </Reveal>
+
       </div>
     </Section>
   );
