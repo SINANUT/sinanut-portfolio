@@ -1365,7 +1365,7 @@ function Contact() {
         title="Let's Connect"
         subtitle="Thank you for visiting my portfolio. I'm actively seeking opportunities as a Data Analyst, Business Intelligence Analyst, or Power BI Developer. Whether you have a job opportunity, collaboration, or simply want to connect, I'd be happy to hear from you."
       />
-      <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
+      <div className="mx-auto grid w-full max-w-5xl gap-8 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <div className="flex h-full flex-col gap-3">
             {[
